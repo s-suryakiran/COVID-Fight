@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'chatbot.dart';
 void main (){
   runApp(MaterialApp(home: Scaffold(
     
@@ -18,6 +19,11 @@ class CovidFight extends StatelessWidget {
       padding: EdgeInsets.all(10),
       alignment: Alignment.bottomRight,
       child: FloatingActionButton(
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return (Chatbot());
+          }));
+        },
           child: Icon(Icons.message),
 
       ),

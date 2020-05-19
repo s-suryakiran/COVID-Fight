@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^8.8.1
-  watson_assistant: ^0.0.3
+  watson_assistant_v2: ^0.0.1
 
 
   # The following adds the Cupertino Icons font to your application.

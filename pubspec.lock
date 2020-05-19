@@ -205,13 +205,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.8"
-  watson_assistant:
+  watson_assistant_v2:
     dependency: "direct main"
     description:
-      name: watson_assistant
+      name: watson_assistant_v2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.1"
   xml:
     dependency: transitive
     description:
