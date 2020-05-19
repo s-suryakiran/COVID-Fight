@@ -13,7 +13,6 @@ class Chatbot extends StatefulWidget {
 class _ChatbotState extends State<Chatbot> {
   String _text;
   WatsonAssistantV2Credential credential = WatsonAssistantV2Credential(
-    version: '2019-02-28',
     username: 'apikey',
     apikey: 'Z7PJ-Fz7Y67qSKSgXZxR8EvvX2cuR-DGXl9nkJmN6kLY',
     assistantID: 'ee6e952e-2521-4d03-82e3-46ee2ebfa858',
