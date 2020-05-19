@@ -26,6 +26,7 @@ dependencies:
   font_awesome_flutter: ^8.8.1
   watson_assistant_v2: ^0.0.1
   flutter_svg: ^0.17.4
+  url_launcher: ^5.4.7
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -72,6 +73,12 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins/Poppins-Bold.ttf
           weight: 700
+    - family: Kelly_Slab
+      fonts:
+          - asset: assets/fonts/Kelly_Slab/KellySlab-Regular.ttf
+    - family: Monoton
+      fonts:
+          - asset: assets/fonts/Monoton/Monoton-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
