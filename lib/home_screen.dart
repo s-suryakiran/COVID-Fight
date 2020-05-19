@@ -19,32 +19,40 @@ class HomeScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
             color: Colors.deepPurple,
           ),
-          child: SafeArea(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(15),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Covid-19",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 35,
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                height: 125,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.deepPurple[800],
+                ),
+                padding: EdgeInsets.all(15),
+//                alignment: Alignment.topLeft,
+                child: Center(
+                  child: SafeArea(
+                    child: Text(
+                      "Covid-19",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 35,
 
-                      fontFamily: "Monoton",
+                        fontFamily: "Monoton",
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(15),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Are you feeling sick?",
-                    style: kTitleTextstyle.copyWith(color: Color(0xfff3e6ff),fontSize: 20,letterSpacing: 1)
-                  ),
-                )
-              ],
-            ),
+              ),
+              Container(
+                padding: EdgeInsets.all(15),
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "Are you feeling sick?",
+                  style: kTitleTextstyle.copyWith(color: Color(0xfff3e6ff),fontSize: 20,letterSpacing: 1)
+                ),
+              )
+            ],
           ),
         )
       ],
