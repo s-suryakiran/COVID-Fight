@@ -154,17 +154,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      width: 200,
-                      height: 110,
-                      decoration: new BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/wash_hands.jpg'),
-                            fit: BoxFit.fill),
-
-                      ),
-
-                    ),
+                    Image.asset("assets/images/washhands.jpg",scale: 0.5,),
                     Text("Wash hands"),
                     Text("frequently")
                   ],
@@ -174,16 +164,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-
-                      decoration: new BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/socialdistance.jpg'),
-                            fit: BoxFit.fill),
-
-                      ),
-
-                    ),
+                    Image.asset("assets/images/socialdistance.jpg",scale: 2,),
                     Text("Social"),
                     Text("Distance")
                   ],
