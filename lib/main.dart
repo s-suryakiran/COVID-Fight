@@ -21,8 +21,10 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-//      home:HomeScreen(),
-        home:Chatbot(),
+      home:HomeScreen(),
+        routes: {
+        '/chatbot':(context) => Chatbot(),
+        },
     );
   }
 }
