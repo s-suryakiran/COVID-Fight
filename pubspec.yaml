@@ -72,6 +72,12 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins/Poppins-Bold.ttf
           weight: 700
+    - family: Kelly_Slab
+      fonts:
+          - asset: assets/fonts/Kelly_Slab/KellySlab-Regular.ttf
+    - family: Monoton
+      fonts:
+          - asset: assets/fonts/Monoton/Monoton-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

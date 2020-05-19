@@ -29,9 +29,9 @@ class HomeScreen extends StatelessWidget {
                     "Covid-19",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w900,
-                      letterSpacing: 3
+                        fontSize: 35,
+
+                      fontFamily: "Monoton",
                     ),
                   ),
                 ),
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: Text(
                     "Are you feeling sick?",
-                    style: kTitleTextstyle.copyWith(color: Color(0xfff3e6ff))
+                    style: kTitleTextstyle.copyWith(color: Color(0xfff3e6ff),fontSize: 20,letterSpacing: 1)
                   ),
                 )
               ],
