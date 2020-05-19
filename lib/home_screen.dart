@@ -31,8 +31,9 @@ class HomeScreen extends StatelessWidget {
                 ),
                 padding: EdgeInsets.all(15),
 //                alignment: Alignment.topLeft,
-                child: Center(
-                  child: SafeArea(
+                child: Container(
+                  padding: EdgeInsets.only(top: 40),
+                  child: Center(
                     child: Text(
                       "Covid-19",
                       style: TextStyle(
@@ -53,79 +54,86 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 18,
                         letterSpacing: 1)),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  RaisedButton(
-                    color: Colors.red,
-                    onPressed: () async {
-                      const url = "tel:+911123978046";
-                      if (await canLaunch(url)) {
-                        await launch(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
-                    },
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Container(
-                      width: 150,
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            FontAwesomeIcons.phoneAlt,
-                            color: Colors.white,
-                            size: 15,
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: RaisedButton(
+                        color: Colors.red,
+                        onPressed: () async {
+                          const url = "tel:+911123978046";
+                          if (await canLaunch(url)) {
+                            await launch(url);
+                          } else {
+                            throw 'Could not launch $url';
+                          }
+                        },
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
                           ),
-                          SizedBox(
-                            width: 8,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                FontAwesomeIcons.phoneAlt,
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                "Call Now",
+                                style: kTitleTextstyle.copyWith(
+                                    color: Colors.white),
+                              ),
+                            ],
                           ),
-                          Text(
-                            "Call Now",
-                            style:
-                                kTitleTextstyle.copyWith(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  RaisedButton(
-                    color: Colors.blue,
-                    //TODO: 1.Self Diagnosis page
-                    onPressed: () {},
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Container(
-                      width: 150,
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            FontAwesomeIcons.stethoscope,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            "Self Diagnosis",
-                            style:
-                                kTitleTextstyle.copyWith(color: Colors.white),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: RaisedButton(
+                        color: Colors.blue,
+                        //TODO: 1.Self Diagnosis page
+                        onPressed: () {},
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                FontAwesomeIcons.stethoscope,
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                "Self Diagnosis",
+                                style: kTitleTextstyle.copyWith(
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               )
             ],
           ),
