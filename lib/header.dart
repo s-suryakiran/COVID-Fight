@@ -24,7 +24,7 @@ class _MyHeaderState extends State<MyHeader> {
     return ClipPath(
       clipper: MyClipper(),
       child: Container(
-        padding: EdgeInsets.only(left: 40, top: 50, right: 20),
+        padding: EdgeInsets.only(left: 10, top: 50, right: 20),
         height: 350,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -37,27 +37,28 @@ class _MyHeaderState extends State<MyHeader> {
             ],
           ),
           image: DecorationImage(
-            alignment: Alignment.topCenter,
+            fit: BoxFit.contain,
+            alignment: Alignment.topLeft,
             image: AssetImage("assets/images/home.png"),
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return InfoScreen();
-                    },
-                  ),
-                );
-              },
-              child: SvgPicture.asset("assets/icons/menu.svg"),
-            ),
-            SizedBox(height: 20),
+//            GestureDetector(
+//              onTap: () {
+//                Navigator.push(
+//                  context,
+//                  MaterialPageRoute(
+//                    builder: (context) {
+//                      return InfoScreen();
+//                    },
+//                  ),
+//                );
+//              },
+//              child: SvgPicture.asset("assets/icons/menu.svg"),
+//            ),
+//            SizedBox(height: 20),
             Expanded(
               child: Stack(
                 children: <Widget>[
@@ -70,16 +71,16 @@ class _MyHeaderState extends State<MyHeader> {
 //                      alignment: Alignment.topCenter,
 //                    ),
 //                  ),
-//                  Positioned(
-//                    top: 100- widget.offset / 2,
-//                    left: 0,
-//                    child: Text(
-//                      "${widget.textTop} \n${widget.textBottom}",
-//                      style: kHeadingTextStyle.copyWith(
-//                        color: Colors.white,
-//                      ),
-//                    ),
-//                  ),
+                  Positioned(
+                    top: 10- widget.offset / 2,
+                    left: 220,
+                    child: Text(
+                      "${widget.textTop} \n${widget.textBottom}",
+                      style: kHeadingTextStyle.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                   Container(), // I dont know why it can't work without container
                 ],
               ),
@@ -95,9 +96,9 @@ class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
-    path.lineTo(0, size.height - 80);
+    path.lineTo(0, size.height - 60);
     path.quadraticBezierTo(
-        size.width / 2, size.height, size.width, size.height - 80);
+        size.width / 2, size.height, size.width, size.height - 60);
     path.lineTo(size.width, 0);
     path.close();
     return path;
