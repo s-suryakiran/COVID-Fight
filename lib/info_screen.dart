@@ -41,7 +41,6 @@ class _InfoScreenState extends State<InfoScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             MyHeader(
-              image: "assets/icons/coronadr.svg",
               textTop: "Get to know",
               textBottom: "About Covid-19.",
               offset: offset,

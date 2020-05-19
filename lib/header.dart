@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import 'constants.dart';
 import 'info_screen.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +37,8 @@ class _MyHeaderState extends State<MyHeader> {
             ],
           ),
           image: DecorationImage(
-            image: AssetImage("assets/images/virus.png"),
+            alignment: Alignment.topCenter,
+            image: AssetImage("assets/images/home.png"),
           ),
         ),
         child: Column(
@@ -58,25 +61,25 @@ class _MyHeaderState extends State<MyHeader> {
             Expanded(
               child: Stack(
                 children: <Widget>[
-                  Positioned(
-                    top: (widget.offset < 0) ? 0 : widget.offset,
-                    child: SvgPicture.asset(
-                      widget.image,
-                      width: 230,
-                      fit: BoxFit.fitWidth,
-                      alignment: Alignment.topCenter,
-                    ),
-                  ),
-                  Positioned(
-                    top: 20 - widget.offset / 2,
-                    left: 150,
-                    child: Text(
-                      "${widget.textTop} \n${widget.textBottom}",
-                      style: kHeadingTextStyle.copyWith(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+//                  Positioned(
+//                    top: (widget.offset < 0) ? 0 : widget.offset,
+//                    child: SvgPicture.asset(
+//                      widget.image,
+//                      width: 230,
+//                      fit: BoxFit.fitWidth,
+//                      alignment: Alignment.topCenter,
+//                    ),
+//                  ),
+//                  Positioned(
+//                    top: 100- widget.offset / 2,
+//                    left: 0,
+//                    child: Text(
+//                      "${widget.textTop} \n${widget.textBottom}",
+//                      style: kHeadingTextStyle.copyWith(
+//                        color: Colors.white,
+//                      ),
+//                    ),
+//                  ),
                   Container(), // I dont know why it can't work without container
                 ],
               ),
