@@ -144,7 +144,55 @@ class HomeScreen extends StatelessWidget {
             child: Text(
               "Prevention",
               style: kTextStyle,
-            ))
+            )),
+        Padding(
+          padding: const EdgeInsets.only(top:8.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      width: 200,
+                      height: 110,
+                      decoration: new BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/wash_hands.jpg'),
+                            fit: BoxFit.fill),
+
+                      ),
+
+                    ),
+                    Text("Wash hands"),
+                    Text("frequently")
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+
+                      decoration: new BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/socialdistance.jpg'),
+                            fit: BoxFit.fill),
+
+                      ),
+
+                    ),
+                    Text("Social"),
+                    Text("Distance")
+                  ],
+                ),
+              ),
+
+            ],
+          ),
+        )
       ],
     ));
   }
