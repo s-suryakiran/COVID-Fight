@@ -131,9 +131,11 @@ class HomeScreen extends StatefulWidget {
                                 ),
                                 Wrap(
                                   crossAxisAlignment: WrapCrossAlignment.center,
+                                  spacing: 5,
+                                  runSpacing: 2,
                                   children: <Widget>[
                                     Text(
-                                      "Call ",
+                                      "Call",
                                       style: kTitleTextstyle.copyWith(
                                           color: Colors.white),
                                     ),
@@ -166,7 +168,7 @@ class HomeScreen extends StatefulWidget {
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
+
                               children: <Widget>[
                                 Icon(
                                   FontAwesomeIcons.stethoscope,
@@ -177,10 +179,12 @@ class HomeScreen extends StatefulWidget {
                                   width: 8,
                                 ),
                                 Wrap(
+                                  spacing: 5,
+                                  runSpacing: 2,
                                   crossAxisAlignment: WrapCrossAlignment.center,
                                   children: <Widget>[
                                     Text(
-                                      "Self ",
+                                      "Self",
                                       style: kTitleTextstyle.copyWith(
                                           color: Colors.white),
                                     ),
@@ -305,6 +309,7 @@ class HomeScreen extends StatefulWidget {
           )
         ],
       ),
-    ));
+    )
+    );
   }
 }
