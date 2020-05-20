@@ -136,37 +136,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               )
             ],
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                Text(
-                "Symptoms",
-                style: kTitleTextstyle,
-              ),
-              SizedBox(height: 20),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    SymptomCard(
-                      image: "assets/images/headache.png",
-                      title: "Headache",
-                      isActive: true,
-                    ),
-                    SymptomCard(
-                      image: "assets/images/caugh.png",
-                      title: "Caugh",
-                    ),
-                    SymptomCard(
-                      image: "assets/images/fever.png",
-                      title: "Fever",
-                    ),
-                  ],
-                ),
-              ),
+
           ),
         ),
         Container(
