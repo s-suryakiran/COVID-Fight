@@ -11,6 +11,7 @@ import 'chatbot.dart';
 import 'placeholder_widget.dart';
 import 'status_updation.dart';
 import 'home.dart';
+
 class HomeScreen extends StatefulWidget {
   final List<BarItem> barItems = [
     BarItem(
@@ -28,11 +29,11 @@ class HomeScreen extends StatefulWidget {
 //      iconData: Icons.search,
 //      color: Colors.yellow.shade900,
 //    ),
-    BarItem(
-      text: "Profile",
-      iconData: Icons.person_outline,
-      color: Colors.teal,
-    ),
+//    BarItem(
+//      text: "Profile",
+//      iconData: Icons.person_outline,
+//      color: Colors.teal,
+//    ),
   ];
 
   @override
@@ -43,29 +44,28 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedBarIndex = 0;
   final List<Widget> _children = [
     PlaceholderWidget(widget: Home()),
-    PlaceholderWidget(widget:StatusUpdation()),
+    PlaceholderWidget(widget: StatusUpdation()),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _children[selectedBarIndex],
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            return Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Chatbot()));
-          },
-          child: Icon(Icons.message),
-        ),
-        bottomNavigationBar: AnimatedBottomBar(
-            barItems: widget.barItems,
-            animationDuration: const Duration(milliseconds: 150),
-            barStyle: BarStyle(fontSize: 20.0, iconSize: 30.0),
-            onBarTap: (index) {
-              setState(() {
-                selectedBarIndex = index;
-              });
-            }),
-
-        );
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          return Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Chatbot()));
+        },
+        child: Icon(Icons.message),
+      ),
+      bottomNavigationBar: AnimatedBottomBar(
+          barItems: widget.barItems,
+          animationDuration: const Duration(milliseconds: 150),
+          barStyle: BarStyle(fontSize: 20.0, iconSize: 30.0),
+          onBarTap: (index) {
+            setState(() {
+              selectedBarIndex = index;
+            });
+          }),
+    );
   }
 }
