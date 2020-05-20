@@ -164,9 +164,19 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Image.asset("assets/images/mask.jpg",),
+                    Text("wear"),
+                    Text("masks")
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
                     Image.asset("assets/images/socialdistance.jpg",scale: 2,),
-                    Text("Social"),
-                    Text("Distance")
+                    Text("wear"),
+                    Text("masks")
                   ],
                 ),
               ),

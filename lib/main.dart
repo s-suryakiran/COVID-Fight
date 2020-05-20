@@ -1,9 +1,9 @@
 import 'constants.dart';
-import 'counter.dart';
-import 'header.dart';
+//import 'counter.dart';
+//import 'header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'status_updation.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
+//import 'status_updation.dart';
 import 'home_screen.dart';
 void main() => runApp(MyApp());
 
