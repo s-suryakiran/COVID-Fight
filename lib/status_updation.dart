@@ -3,6 +3,7 @@ import 'counter.dart';
 import 'header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'extract_data_from_web.dart';
 class StatusUpdation extends StatefulWidget {
   @override
   _StatusUpdationState createState() => _StatusUpdationState();
@@ -11,12 +12,22 @@ class StatusUpdation extends StatefulWidget {
 class _StatusUpdationState extends State<StatusUpdation> {
   final controller = ScrollController();
   double offset = 0;
+  String deaths;
+  void getData() async{
+    NetworkHelper nw =  NetworkHelper('https://covid19api.io/api/v1/Deaths');
+    var data = await nw.getData();
+    setState(() {
+      deaths = data;
+    });
+    print(data);
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     controller.addListener(onScroll);
+    getData();
   }
 
   @override
@@ -134,20 +145,29 @@ class _StatusUpdationState extends State<StatusUpdation> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Counter(
-                          color: kInfectedColor,
-                          number: 1046,
-                          title: "Infected",
+                        Expanded(
+                          child: Column(
+                            children: <Widget>[
+                              Text("12345"),
+                              Text("Infected",style: TextStyle(color: kInfectedColor,fontWeight: FontWeight.bold),)
+                            ],
+                          ),
                         ),
-                        Counter(
-                          color: kDeathColor,
-                          number: 87,
-                          title: "Deaths",
+                        Expanded(
+                          child: Column(
+                            children: <Widget>[
+                              Text(deaths),
+                              Text("Deaths",style: TextStyle(color: kDeathColor,fontWeight: FontWeight.bold),)
+                            ],
+                          ),
                         ),
-                        Counter(
-                          color: kRecovercolor,
-                          number: 46,
-                          title: "Recovered",
+                        Expanded(
+                          child: Column(
+                            children: <Widget>[
+                              Text("12345"),
+                              Text("Recovered",style: TextStyle(color: kRecovercolor,fontWeight: FontWeight.bold),)
+                            ],
+                          ),
                         ),
                       ],
                     ),
