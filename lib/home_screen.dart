@@ -77,6 +77,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 Icon(
                                   FontAwesomeIcons.phoneAlt,
@@ -86,10 +87,18 @@ class HomeScreen extends StatelessWidget {
                                 SizedBox(
                                   width: 8,
                                 ),
-                                Text(
-                                  "Call Now",
-                                  style: kTitleTextstyle.copyWith(
-                                      color: Colors.white),
+                                Wrap(
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  children:<Widget>[Text(
+                                    "Call ",
+                                    style: kTitleTextstyle.copyWith(
+                                        color: Colors.white),
+                                  ),
+                                    Text(
+                                      "Now",
+                                      style: kTitleTextstyle.copyWith(
+                                          color: Colors.white),
+                                    ),],
                                 ),
                               ],
                             ),
@@ -112,6 +121,8 @@ class HomeScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 Icon(
                                   FontAwesomeIcons.stethoscope,
