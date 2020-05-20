@@ -12,10 +12,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-          child: Column(
-      children: <Widget>[
+      child: Column(
+        children: <Widget>[
           Container(
-
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color: Colors.deepPurple,
@@ -23,7 +22,6 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Container(
-
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Colors.deepPurple[800],
@@ -89,16 +87,18 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 Wrap(
                                   crossAxisAlignment: WrapCrossAlignment.center,
-                                  children:<Widget>[Text(
-                                    "Call ",
-                                    style: kTitleTextstyle.copyWith(
-                                        color: Colors.white),
-                                  ),
+                                  children: <Widget>[
+                                    Text(
+                                      "Call ",
+                                      style: kTitleTextstyle.copyWith(
+                                          color: Colors.white),
+                                    ),
                                     Text(
                                       "Now",
                                       style: kTitleTextstyle.copyWith(
                                           color: Colors.white),
-                                    ),],
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -134,16 +134,18 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 Wrap(
                                   crossAxisAlignment: WrapCrossAlignment.center,
-                                  children:<Widget>[Text(
-                                    "Self ",
-                                    style: kTitleTextstyle.copyWith(
-                                        color: Colors.white),
-                                  ),
+                                  children: <Widget>[
+                                    Text(
+                                      "Self ",
+                                      style: kTitleTextstyle.copyWith(
+                                          color: Colors.white),
+                                    ),
                                     Text(
                                       "Diagnosis",
                                       style: kTitleTextstyle.copyWith(
                                           color: Colors.white),
-                                    ),],
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -164,27 +166,29 @@ class HomeScreen extends StatelessWidget {
                 style: kTextStyle,
               )),
           Padding(
-            padding: const EdgeInsets.only(top:8.0),
+            padding: const EdgeInsets.only(top: 8.0),
             child: Row(
 //            crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Expanded(
-
                   child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset("assets/images/wash.png",),
+                      Image.asset(
+                        "assets/images/wash.png",
+                      ),
                       Text("Wash hands"),
                       Text("frequently")
                     ],
                   ),
                 ),
                 Expanded(
-
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset("assets/images/mask.jpg",),
+                      Image.asset(
+                        "assets/images/mask.jpg",
+                      ),
                       Text("Wear"),
                       Text("Masks")
                     ],
@@ -194,18 +198,69 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset("assets/images/socialdistance.jpeg",),
+                      Image.asset(
+                        "assets/images/socialdistance.jpeg",
+                      ),
                       Text("Social"),
                       Text("Distancing")
                     ],
                   ),
                 ),
+              ],
+            ),
+          ),
+          Container(
+              alignment: Alignment.bottomLeft,
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+              child: Text(
+                "Symptoms",
+                style: kTextStyle,
+              )),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
+//            crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        "assets/images/caugh.png",
+                      ),
+                      Text("Cough"),
 
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        "assets/images/fever.png",
+                      ),
+                      Text("Fever"),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        "assets/images/headache.png",
+                      ),
+                      Text("Headache"),
+
+                    ],
+                  ),
+                ),
               ],
             ),
           )
-      ],
-    ),
-        ));
+        ],
+      ),
+    ));
   }
 }
