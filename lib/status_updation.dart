@@ -13,13 +13,16 @@ class _StatusUpdationState extends State<StatusUpdation> {
   final controller = ScrollController();
   double offset = 0;
   String deaths;
+  String cases;
+  String recovered;
   void getData() async{
-    NetworkHelper nw =  NetworkHelper('https://covid19api.io/api/v1/Deaths');
+    NetworkHelper nw =  NetworkHelper('https://covid19api.io/api/v1/AllReports');
     var data = await nw.getData();
     setState(() {
-      deaths = data;
+      cases = data['cases'].toString();
+      deaths = data['deaths'].toString();
+      recovered = data['recovered'].toString();
     });
-    print(data);
   }
 
   @override
@@ -148,7 +151,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
                         Expanded(
                           child: Column(
                             children: <Widget>[
-                              Text("12345"),
+                              Text(cases!=null?cases:'loading..'),
                               Text("Infected",style: TextStyle(color: kInfectedColor,fontWeight: FontWeight.bold),)
                             ],
                           ),
@@ -156,7 +159,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
                         Expanded(
                           child: Column(
                             children: <Widget>[
-                              Text(deaths),
+                              Text(deaths!=null?deaths:'loading..'),
                               Text("Deaths",style: TextStyle(color: kDeathColor,fontWeight: FontWeight.bold),)
                             ],
                           ),
@@ -164,7 +167,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
                         Expanded(
                           child: Column(
                             children: <Widget>[
-                              Text("12345"),
+                              Text(recovered!=null?recovered:'loading..'),
                               Text("Recovered",style: TextStyle(color: kRecovercolor,fontWeight: FontWeight.bold),)
                             ],
                           ),
