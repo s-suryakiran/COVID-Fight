@@ -22,11 +22,11 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-//      home:HomeScreen(),
-    home: StatusUpdation(),
-        routes: {
-        '/chatbot':(context) => Chatbot(),
-        },
+      home:HomeScreen(),
+//    home: StatusUpdation(),
+//        routes: {
+//        '/chatbot':(context) => Chatbot(),
+//        },
     );
   }
 }
