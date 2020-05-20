@@ -14,8 +14,7 @@ class HomeScreen extends StatelessWidget {
         body: Column(
       children: <Widget>[
         Container(
-          width: double.infinity,
-          height: 250,
+
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: Colors.deepPurple,
@@ -23,8 +22,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Container(
-                width: double.infinity,
-                height: 125,
+
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.deepPurple[800],
