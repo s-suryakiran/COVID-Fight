@@ -148,25 +148,27 @@ class HomeScreen extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top:8.0),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+//            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Expanded(
+
                 child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset("assets/images/washhands.jpg",scale: 0.5,),
+                    Image.asset("assets/images/wash.png",),
                     Text("Wash hands"),
                     Text("frequently")
                   ],
                 ),
               ),
               Expanded(
+
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Image.asset("assets/images/mask.jpg",),
-                    Text("wear"),
-                    Text("masks")
+                    Text("Wear"),
+                    Text("Masks")
                   ],
                 ),
               ),
@@ -174,9 +176,9 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset("assets/images/socialdistance.jpg",scale: 2,),
-                    Text("wear"),
-                    Text("masks")
+                    Image.asset("assets/images/socialdistance.jpeg",),
+                    Text("Social"),
+                    Text("Distancing")
                   ],
                 ),
               ),
