@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 //import 'status_updation.dart';
 import 'home_screen.dart';
+import 'chatbot.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
       home:HomeScreen(),
+        routes: {
+        '/chatbot':(context) => Chatbot(),
+        },
     );
   }
 }

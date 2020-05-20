@@ -1,6 +1,7 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:watson_assistant_v2/watson_assistant_v2.dart';
+
 class Chatbot extends StatefulWidget {
   Chatbot({Key key, this.title}) : super(key: key);
 
@@ -12,13 +13,6 @@ class Chatbot extends StatefulWidget {
 
 class _ChatbotState extends State<Chatbot> {
   String _text;
-  WatsonAssistantV2Credential credential = WatsonAssistantV2Credential(
-    username: 'apikey',
-    apikey: 'Z7PJ-Fz7Y67qSKSgXZxR8EvvX2cuR-DGXl9nkJmN6kLY',
-    assistantID: 'ee6e952e-2521-4d03-82e3-46ee2ebfa858',
-    url: 'https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/60d1e6fa-42ba-4a2e-9d4f-fae78ed68966/v2',
-  );
-
   WatsonAssistantApiV2 watsonAssistant;
   WatsonAssistantResponse watsonAssistantResponse;
   WatsonAssistantContext watsonAssistantContext =
@@ -39,9 +33,16 @@ class _ChatbotState extends State<Chatbot> {
   @override
   void initState() {
     super.initState();
-    watsonAssistant =
-        WatsonAssistantApiV2(watsonAssistantCredential: credential);
-    _callWatsonAssistant();
+    watsonAssistant = WatsonAssistantApiV2(
+        watsonAssistantCredential: WatsonAssistantV2Credential(
+            username: 'apikey',
+            apikey: 'jscOX35ToavABi423ZTClYKB6K7Rs0sxnFW4osnSX_gz',
+            assistantID: 'c2d0939d-b2b3-47df-848b-4f03c7bff066',
+            url:'https://api.us-south.assistant.watson.cloud.ibm.com/instances/9c3f5334-9ae1-4b6d-8fc4-56176e38bca5/v2'
+
+        ));
+
+//    _callWatsonAssistant();
   }
 
   @override
@@ -68,42 +69,43 @@ class _ChatbotState extends State<Chatbot> {
         backgroundColor: Colors.white,
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              TextField(
-                controller: myController,
-                decoration: InputDecoration(
-                  hintText: 'Your Input to the chatbot',
-                  contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                    BorderSide(color: Colors.lightBlueAccent, width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                    BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+          child: SafeArea(
+            child: ListView(
+              children: <Widget>[
+                TextField(
+
+                  controller: myController,
+                  decoration: InputDecoration(
+                    hintText: 'Your Input to the chatbot',
+                    contentPadding:
+                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                      BorderSide(color: Colors.lightBlueAccent, width: 1.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                      BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              Text(
-                _text != null ? '$_text' : 'Watson Response Here',
-                style: Theme.of(context).textTheme.display1,
-              ),
-              SizedBox(
-                height: 24.0,
-              ),
-            ],
+                SizedBox(
+                  height: 8.0,
+                ),
+                Text(
+                  _text != null ? '$_text' : 'Watson Response Here',
+//                style: Theme.of(context).textTheme.display1,
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -120,8 +122,3 @@ class _ChatbotState extends State<Chatbot> {
     super.dispose();
   }
 }
-
-
-
-
-
