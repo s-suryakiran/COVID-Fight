@@ -43,6 +43,11 @@ class HomeScreen extends StatefulWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+        },
+        child: Icon(Icons.message),
+      ),
         bottomNavigationBar: AnimatedBottomBar(
             barItems: widget.barItems,
             animationDuration: const Duration(milliseconds: 150),
