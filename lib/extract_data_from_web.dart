@@ -12,14 +12,10 @@ class NetworkHelper {
     String errorCode = response.statusCode.toString();
     if (response.statusCode == 200) {
       var decodedData = jsonDecode(response.body.toString());
-      var recentDeathCount = decodedData['deaths'][0];
-      return recentDeathCount['TotalDeaths'].toString();
+      var recentDeathCount = decodedData['reports'][0];
+      return recentDeathCount;
     } else {
       print(response.statusCode.toString());
     }
   }
 }
-
-//        var  date= recentDeathCount['Date'];
-//        var  changeInTotal= recentDeathCount['ChangeInTotal'];
-//        var  changeTotalInPercent= recentDeathCount['ChangeTotalInPercent'];
