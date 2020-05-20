@@ -13,12 +13,12 @@ class HomeScreen extends StatefulWidget {
   final List<BarItem> barItems = [
     BarItem(
       text: "Home",
-      iconData: FontAwesomeIcons.home,
+      iconData: Icons.home,
       color: Colors.indigo,
     ),
     BarItem(
       text: "Covid Status",
-      iconData: FontAwesomeIcons.chartBar,
+      iconData: Icons.insert_chart,
       color: Colors.pinkAccent,
     ),
 //    BarItem(

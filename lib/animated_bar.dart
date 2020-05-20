@@ -25,8 +25,8 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar>
       elevation: 10.0,
       child: Padding(
         padding: const EdgeInsets.only(
-          bottom: 32.0,
-          top: 16.0,
+          bottom:10.0,
+          top: 10.0,
           left: 16.0,
           right: 16.0,
         ),
@@ -65,7 +65,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar>
               Icon(
                 item.iconData,
                 color: isSelected ? item.color : Colors.black,
-                size: widget.barStyle.iconSize,
+                size: 25
               ),
               SizedBox(
                 width: 10.0,
@@ -74,12 +74,13 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar>
                 duration: widget.animationDuration,
                 curve: Curves.easeInOut,
                 vsync: this,
+                alignment: Alignment.bottomRight,
                 child: Text(
                   isSelected ? item.text : "",
                   style: TextStyle(
                       color: item.color,
                       fontWeight: widget.barStyle.fontWeight,
-                      fontSize: widget.barStyle.fontSize),
+                      fontSize: 20),
                 ),
               )
             ],
