@@ -1,3 +1,5 @@
+import 'package:CovidFight/status_updation.dart';
+
 import 'constants.dart';
 //import 'counter.dart';
 //import 'header.dart';
@@ -20,7 +22,8 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-      home:HomeScreen(),
+//      home:HomeScreen(),
+    home: StatusUpdation(),
         routes: {
         '/chatbot':(context) => Chatbot(),
         },

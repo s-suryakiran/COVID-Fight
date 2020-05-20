@@ -1,23 +1,25 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-void main(){
-  getData();
-}
-void getData() async{
-    http.Response response = await http.get("https://covid19api.io/api/v1/Deaths");
+
+class NetworkHelper {
+  NetworkHelper(this.url);
+  final String url;
+
+  Future getData() async {
+    String totalDeaths;
+    http.Response response =
+        await http.get(url);
     String errorCode = response.statusCode.toString();
-    if(response.statusCode ==200){
-        var decodedData = jsonDecode(response.body.toString());
-        var recentDeathCount = decodedData['deaths'][0];
-        var  date= recentDeathCount['Date'];
-        var  totalDeaths = recentDeathCount['TotalDeaths'];
-        var  changeInTotal= recentDeathCount['ChangeInTotal'];
-        var  changeTotalInPercent= recentDeathCount['ChangeTotalInPercent'];
-        print("As of $date,"
-            "totalDeaths: $totalDeaths"
-            "changeInTotal: $changeInTotal"
-            "changeTotalInPercent: $changeTotalInPercent");
-    }else{
-      print("Error code:$errorCode");
+    if (response.statusCode == 200) {
+      var decodedData = jsonDecode(response.body.toString());
+      var recentDeathCount = decodedData['deaths'][0];
+      return recentDeathCount['TotalDeaths'].toString();
+    } else {
+      print(response.statusCode.toString());
     }
+  }
 }
+
+//        var  date= recentDeathCount['Date'];
+//        var  changeInTotal= recentDeathCount['ChangeInTotal'];
+//        var  changeTotalInPercent= recentDeathCount['ChangeTotalInPercent'];
