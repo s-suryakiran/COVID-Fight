@@ -88,7 +88,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
                               style: kTitleTextstyle,
                             ),
                             TextSpan(
-                              text: "Newest update March 28",
+                              text: "Newest update "+(DateTime.now().month).toString(),
                               style: TextStyle(
                                 color: kTextLightColor,
                               ),
