@@ -490,7 +490,8 @@ class StoryBrain {
               {
                 if (answer == [0, 2] || answer == [0, 1, 2])
                   _nextQuestion.add(26);
-                else if (answer == [0, 2, 3]) _nextQuestion.add(44);
+                else if (!answer.contains(0) && answer==[2])
+                  _nextQuestion.add(44);
               }
           }
         }break;
