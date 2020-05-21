@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "587172879338",
+    "firebase_url": "https://covid-flutter-28f8c.firebaseio.com",
+    "project_id": "covid-flutter-28f8c",
+    "storage_bucket": "covid-flutter-28f8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587172879338:android:a6134ea0e31c8b8e2cf093",
+        "android_client_info": {
+          "package_name": "com.suryakiran.CovidFight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587172879338-l7uvr6lo9os98r69t54bq9oueqmelpaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBDDsywxfiPJN43eAA-d4xvNsnVr5yB0A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587172879338-l7uvr6lo9os98r69t54bq9oueqmelpaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
