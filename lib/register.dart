@@ -7,6 +7,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   String email;
   String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +45,7 @@ class _RegisterState extends State<Register> {
             TextField(
               onChanged: (value) {
                 password = value;
-                },
+              },
               decoration: InputDecoration(
                 hintText: 'Enter your password',
                 contentPadding:
@@ -88,4 +89,5 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
+  }
 }

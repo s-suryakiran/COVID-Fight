@@ -1,168 +1,181 @@
 import 'self_diagnosis.dart';
+import 'package:charcode/ascii.dart';
+import 'package:charcode/html_entity.dart';
 
 class StoryBrain {
   int _symptomNumber = 0;
   List<SelfDiagnosis> _storyData = [
+    //type 1=> yes or no
+    //type 2=> single choice selection
+    //type 3=> multiple choice selection
+    //type 4=>result
+
+    //1
     SelfDiagnosis(
-        id: 1,
-        questionTitle: 'Select your gender',
-        choice1: 'Male',
-        choice2: 'Female'),
-    SelfDiagnosis(
-        id: 2,
-        questionTitle: 'How old are you?',
-        choice1: 'Yes',
-        choice2: 'No'),
-    SelfDiagnosis(
-        id: 3,
-        questionTitle: 'Please select all the statements that apply to you',
-        choice1: 'Current Cancer',
-        choice2:
-            'Do you have diseases or do you take drugs that weaken your immune system',
+        type: 3,
+        questionTitle: 'Please check all statements that apply to you. ',
+        choice1: 'Current cancer',
+        choice2: 'Diseases or drugs that weaken immune system',
         choice3: 'Obesity',
-        choice4: 'Long-term stay at a care facility or nursing home'),
+        choice4: 'Long-term stay at care facility or nursing home'),
+    //2
     SelfDiagnosis(
-        id: 4,
-        questionTitle: 'Please select all the statements that apply to you',
+        type: 3,
+        questionTitle: 'Please check all statements that apply to you.',
         choice1: 'Diabetes',
         choice2: 'Cardiovascular disease',
         choice3: 'History of chronic lung disease',
         choice4: 'History of chronic liver disease',
         choice5: 'History of chronic kidney disease'),
+    //3
     SelfDiagnosis(
-        id: 5,
+        type: 3,
         questionTitle:
             'Do you have any of the followig symptoms? Please select symptoms that are not related to any chronic disease you may be subject to:',
         choice1: 'Fever',
         choice2: 'Cough',
         choice3: 'Shortness of breath'),
-
+    //4
     SelfDiagnosis(
-        id: 6,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
-
+        type: 3,
+        questionTitle: 'Do you have any of the following symptoms?',
+        choice1: 'Fatigue',
+        choice2: 'Muscle pain',
+        choice3: 'Chills',
+        choice4: 'Headache',
+        choice5: 'Diarrhea',
+        choice6: 'Nausea',
+        choice7: 'Sore Throat',
+        choice8: 'Impaired taste or smell'),
+//5
     SelfDiagnosis(
-        id: 7,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
-
+        type: 2,
+        questionTitle:
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+        choice1:
+            'I have provided direct care to such a person without the use of protective mask or gloves',
+        choice2: 'I had a direct physical contact with such a person',
+        choice3:
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+        choice4: 'None of the above',
+        choice5: 'Other type of contact'),
+//6
     SelfDiagnosis(
-        id: 8,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
-
+        type: 2,
+        questionTitle:
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+        choice1:
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
+        choice2: 'I had a direct physical contact with such a person',
+        choice3:
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+        choice4: 'None of the above',
+        choice5: 'Other type of contact'),
+    //7
+    //TODO
     SelfDiagnosis(
-        id: 9,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
-
+      type: 4,
+      questionTitle: 'Result',
+      choice1: 'Quarantine',
+    ),
+    //8
+//TODO
     SelfDiagnosis(
-        id: 10,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
-
+      type: 4,
+      questionTitle: 'Result',
+      choice1: 'Stay home and monitor your symptoms',
+    ),
+    //9
+//TODO
     SelfDiagnosis(
-        id: 11,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
-
+      type: 4,
+      questionTitle: 'Result',
+      choice1: 'Quarantine',
+    ),
+    //10
+    //TODO
     SelfDiagnosis(
-        id: 12,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
+      type: 4,
+      questionTitle: 'Result',
+      choice1: 'Follow preventive measures',
+    ),
+    //11
     SelfDiagnosis(
-        id: 13,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
+      type: 2,
+      questionTitle: 'How high is your fever?',
+      choice1: 'Between 37.5 °C and 38 °C(99.5 °F and 100.4 °F)',
+      choice2: 'Between 38 °C and 40 °C(100.4 °F and 104.7 °F)',
+      choice3: 'Greater than 40 °C(104 °F)',
+      choice4: 'I haven\' taken my temperature',
+    ),
+    //12
     SelfDiagnosis(
-        id: 14,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
+      type: 1,
+      questionTitle: 'Are your symptoms worsening rapidly?',
+      choice1: 'Yes',
+      choice2: 'No',
+    ),
+    //13
     SelfDiagnosis(
-        id: 15,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
+      type: 1,
+      questionTitle: 'Are you breathing very fast?',
+      choice1: 'Yes',
+      choice2: 'No',
+    ),
+    //14
     SelfDiagnosis(
-        id: 16,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
+      type: 1,
+      questionTitle: 'Are you coughing a blood?',
+      choice1: 'Yes',
+      choice2: 'No',
+    ),
+    //15
     SelfDiagnosis(
-        id: 17,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
+        type: 3,
+        questionTitle: 'Do you have any of the following symptoms?',
+        choice1: 'Fatigue',
+        choice2: 'Muscle pain',
+        choice3: 'Chills',
+        choice4: 'Headache',
+        choice5: 'Diarrhea',
+        choice6: 'Nausea',
+        choice7: 'Sore Throat',
+        choice8: 'Impaired taste or smell'),
+    //16
     SelfDiagnosis(
-        id: 18,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
+      type: 1,
+      questionTitle:
+          'Have you traveled or resided in the country of local, widespread transmission of corona virus?',
+      choice1: 'Yes',
+      choice2: 'No',
+    ),
+    //17
     SelfDiagnosis(
-        id: 19,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
+        type: 2,
+        questionTitle:
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+        choice1:
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
+        choice2: 'I had a direct physical contact with such a person',
+        choice3:
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+        choice4: 'None of the above',
+        choice5: 'Other type of contact'),
+    //18
+    //TODO
     SelfDiagnosis(
-        id: 20,
-        questionTitle: '',
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: '',
-        choice5: ''),
+        type: 4,
+        questionTitle: 'Result',
+        choice1: 'Avoid all contacts.Consult health department.'),
+    //19
+    //TODO
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor'),
+//20
+    //TODO
+    SelfDiagnosis(
+        type: 4,
+        questionTitle: 'Result',
+        choice1: 'Avoid all contacts.Consult health department.'),
 
 //    Story(
 //        storyTitle:
