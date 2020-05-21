@@ -84,8 +84,9 @@ class _ChatbotState extends State<Chatbot> {
     );
     setState(() {
       _messages.insert(0, message);
+      getResponse(text);
     });
-    getResponse(text);
+
   }
 
   @override
@@ -97,7 +98,6 @@ class _ChatbotState extends State<Chatbot> {
             apikey: 'Z7PJ-Fz7Y67qSKSgXZxR8EvvX2cuR-DGXl9nkJmN6kLY',
             assistantID: 'ee6e952e-2521-4d03-82e3-46ee2ebfa858',
             url: 'https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/60d1e6fa-42ba-4a2e-9d4f-fae78ed68966/v2'));
-    _callWatsonAssistant();
 
   }
 

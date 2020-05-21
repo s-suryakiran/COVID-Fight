@@ -20,7 +20,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
   String countryInfected = '-';
   String countryDeaths = '-';
   String countryRecovered = '-';
-  String Value = "World";
+  String Value;
   List<String> countryNames = new List();
 
   void getData() async {
@@ -34,10 +34,12 @@ class _StatusUpdationState extends State<StatusUpdation> {
       recovered = data['recovered'].toString();
       table = data['table'][0];
       for (var i in table) {
-        countryNames.add(i['Country']);
+        if (i['Country'] != 'World' || i['Country'] != 'Total:')
+          countryNames.add(i['Country']);
       }
 
-      countryNames.sort();});
+      countryNames.sort();
+    });
   }
 
   @override
@@ -74,7 +76,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
               textBottom: "is stay at home.",
               offset: offset,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -86,25 +88,24 @@ class _StatusUpdationState extends State<StatusUpdation> {
                           children: [
                             TextSpan(
                               text: "Case Update\n",
-                              style: kTitleTextstyle,
+                              style: kTitleTextstyle.copyWith(fontSize: 20),
                             ),
                             TextSpan(
-                              text: "Newest update "+(DateTime.now().month).toString(),
+                              text: "WorldWide",
                               style: TextStyle(
-                                color: kTextLightColor,
-                              ),
+                                  color: kTextLightColor, fontSize: 18),
                             ),
                           ],
                         ),
                       ),
                       Spacer(),
-                      Text(
-                        "See details",
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+//                      Text(
+//                        "See details",
+//                        style: TextStyle(
+//                          color: kPrimaryColor,
+//                          fontWeight: FontWeight.w600,
+//                        ),
+//                      ),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -167,6 +168,15 @@ class _StatusUpdationState extends State<StatusUpdation> {
                     ),
                   ),
                   SizedBox(height: 20),
+
+                    Container(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        "Country-wise",
+                        style: TextStyle(color: kTextLightColor, fontSize: 17),
+                      ),
+                    ),
+                  SizedBox(height: 20),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 20),
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -185,6 +195,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
                         SizedBox(width: 20),
                         Expanded(
                           child: DropdownButton(
+                            hint: new Text("Select Country"),
                             isExpanded: true,
                             underline: SizedBox(),
                             icon: SvgPicture.asset("assets/icons/dropdown.svg"),
@@ -201,10 +212,15 @@ class _StatusUpdationState extends State<StatusUpdation> {
                                 if (value == i['Country']) {
                                   setState(() {
                                     Value = value;
-                                    countryInfected=i['TotalCases'].toString();
-                                    countryDeaths=i['TotalDeaths'].toString();
-                                    countryRecovered=i['TotalRecovered'].toString();
-
+                                    if (i['TotalCases'].toString() != "")
+                                      countryInfected =
+                                          i['TotalCases'].toString();
+                                    if (i['TotalDeaths'].toString() != "")
+                                      countryDeaths =
+                                          i['TotalDeaths'].toString();
+                                    if (i['TotalRecovered'].toString() != "")
+                                      countryRecovered =
+                                          i['TotalRecovered'].toString();
                                   });
                                 }
                               }
@@ -214,7 +230,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 8),
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
