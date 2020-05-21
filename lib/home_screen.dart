@@ -7,7 +7,7 @@ import 'header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'animated_bar.dart';
-import 'chatbot.dart';
+import 'chatbot_chat.dart';
 import 'placeholder_widget.dart';
 import 'status_updation.dart';
 import 'home.dart';
@@ -51,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: _children[selectedBarIndex],
       floatingActionButton: FloatingActionButton(
+        heroTag: "button1",
         onPressed: () {
           return Navigator.push(
               context, MaterialPageRoute(builder: (context) => Chatbot()));
