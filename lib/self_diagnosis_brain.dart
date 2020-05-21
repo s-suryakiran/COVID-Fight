@@ -1,6 +1,4 @@
 import 'self_diagnosis.dart';
-import 'package:charcode/ascii.dart';
-import 'package:charcode/html_entity.dart';
 
 class StoryBrain {
   int _symptomNumber = 0;
@@ -31,7 +29,7 @@ class StoryBrain {
     SelfDiagnosis(
         type: 3,
         questionTitle:
-            'Do you have any of the followig symptoms? Please select symptoms that are not related to any chronic disease you may be subject to:',
+            'Do you have any of the following symptoms? Please select symptoms that are not related to any chronic disease you may be subject to:',
         choice1: 'Fever',
         choice2: 'Cough',
         choice3: 'Shortness of breath'),
@@ -180,7 +178,7 @@ class StoryBrain {
     SelfDiagnosis(
       type: 1,
       questionTitle:
-      'Have you traveled or resided in the country of local, widespread transmission of corona virus?',
+          'Have you traveled or resided in the country of local, widespread transmission of corona virus?',
       choice1: 'Yes',
       choice2: 'No',
     ),
@@ -188,12 +186,12 @@ class StoryBrain {
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //23
@@ -210,10 +208,7 @@ class StoryBrain {
         choice1: 'Stay home and monitor your symptoms.'),
     //25
     //TODO
-    SelfDiagnosis(
-        type: 4,
-        questionTitle: 'Result',
-        choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
     //26
     SelfDiagnosis(
       type: 2,
@@ -292,16 +287,16 @@ class StoryBrain {
         choice6: 'Nausea',
         choice7: 'Sore Throat',
         choice8: 'Impaired taste or smell'),
-     //36
+    //36
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //37
@@ -323,23 +318,20 @@ class StoryBrain {
         questionTitle: 'Result',
         choice1: 'Stay home and monitor your symptoms.'),
     //40
-  //TODO
-  SelfDiagnosis(
-  type: 4,
-  questionTitle: 'Result',
-  choice1: 'Call Doctor.'),
-  //41
-      SelfDiagnosis(
-      type: 2,
-      questionTitle:
-      'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
-      choice1:
-      'I have provided direct care to such aperson without the use of protective mask or gloves',
-      choice2: 'I had a direct physical contact with such a person',
-      choice3:
-      'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
-      choice4: 'None of the above',
-      choice5: 'Other type of contact'),
+    //TODO
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    //41
+    SelfDiagnosis(
+        type: 2,
+        questionTitle:
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+        choice1:
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
+        choice2: 'I had a direct physical contact with such a person',
+        choice3:
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+        choice4: 'None of the above',
+        choice5: 'Other type of contact'),
     //42
     //TODO
     SelfDiagnosis(
@@ -360,10 +352,7 @@ class StoryBrain {
         choice1: 'Stay home and monitor your symptoms.'),
     //45
     //TODO
-    SelfDiagnosis(
-        type: 4,
-        questionTitle: 'Result',
-        choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
     //46
     SelfDiagnosis(
       type: 1,
@@ -401,12 +390,12 @@ class StoryBrain {
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //51
@@ -423,10 +412,7 @@ class StoryBrain {
         choice1: 'Call Emergency number.Avoid all contacts.'),
     //53
     //TODO
-    SelfDiagnosis(
-        type: 4,
-        questionTitle: 'Result',
-        choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
     //54
     //TODO
     SelfDiagnosis(
@@ -437,12 +423,12 @@ class StoryBrain {
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //56
@@ -453,10 +439,7 @@ class StoryBrain {
         choice1: 'Avoid all contacts.Consult health department.'),
     //57
     //TODO
-    SelfDiagnosis(
-        type: 4,
-        questionTitle: 'Result',
-        choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
 //    Story(
 //        storyTitle:
 //        'You bond with the murderer while crooning verses of "Can you feel the love tonight". He drops you off at the next town. Before you go he asks you if you know any good places to dump bodies. You reply: "Try the pier".',
