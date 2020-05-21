@@ -11,6 +11,7 @@ import 'chatbot_chat.dart';
 import 'placeholder_widget.dart';
 import 'status_updation.dart';
 import 'home.dart';
+import 'info_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final List<BarItem> barItems = [
@@ -24,11 +25,11 @@ class HomeScreen extends StatefulWidget {
       iconData: Icons.insert_chart,
       color: Colors.pinkAccent,
     ),
-//    BarItem(
-//      text: "Search",
-//      iconData: Icons.search,
-//      color: Colors.yellow.shade900,
-//    ),
+    BarItem(
+      text: "Health Tips",
+      iconData: Icons.beenhere,
+      color: Colors.green,
+    ),
 //    BarItem(
 //      text: "Profile",
 //      iconData: Icons.person_outline,
@@ -45,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _children = [
     PlaceholderWidget(widget: Home()),
     PlaceholderWidget(widget: StatusUpdation()),
+    PlaceholderWidget(widget: InfoScreen(),)
   ];
   @override
   Widget build(BuildContext context) {

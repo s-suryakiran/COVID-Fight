@@ -72,8 +72,8 @@ class _StatusUpdationState extends State<StatusUpdation> {
           children: <Widget>[
             MyHeader(
 //              image: "assets/icons/Drcorona.svg",
-              textTop: "All you need",
-              textBottom: "is stay at home.",
+              textTop: "All you need is",
+              textBottom: "stay at home.",
               offset: offset,
             ),
             SizedBox(height: 10),
@@ -126,56 +126,37 @@ class _StatusUpdationState extends State<StatusUpdation> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Expanded(
-                          child: Column(
-                            children: <Widget>[
-                              Text(cases != null ? cases : 'loading..'),
-                              Text(
-                                "Infected",
-                                style: TextStyle(
-                                    color: kInfectedColor,
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
+                          child: Counter(
+                            color: kInfectedColor,
+                            number: cases != null ? cases : 'loading..',
+                            title: "Infected",
                           ),
                         ),
                         Expanded(
-                          child: Column(
-                            children: <Widget>[
-                              Text(deaths != null ? deaths : 'loading..'),
-                              Text(
-                                "Deaths",
-                                style: TextStyle(
-                                    color: kDeathColor,
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
+                          child: Counter(
+                            color: kDeathColor,
+                            number: deaths != null ? deaths : 'loading..',
+                            title: "Deaths",
                           ),
                         ),
                         Expanded(
-                          child: Column(
-                            children: <Widget>[
-                              Text(recovered != null ? recovered : 'loading..'),
-                              Text(
-                                "Recovered",
-                                style: TextStyle(
-                                    color: kRecovercolor,
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
+                          child: Counter(
+                            color: kRecovercolor,
+                            number: recovered != null ? recovered : 'loading..',
+                            title: "Recovered",
                           ),
                         ),
                       ],
                     ),
                   ),
                   SizedBox(height: 20),
-
-                    Container(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        "Country-wise",
-                        style: TextStyle(color: kTextLightColor, fontSize: 17),
-                      ),
+                  Container(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      "Country-wise",
+                      style: TextStyle(color: kTextLightColor, fontSize: 17),
                     ),
+                  ),
                   SizedBox(height: 20),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 20),
@@ -230,7 +211,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(height: 20),
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
@@ -248,42 +229,24 @@ class _StatusUpdationState extends State<StatusUpdation> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Expanded(
-                          child: Column(
-                            children: <Widget>[
-                              Text(countryInfected),
-                              Text(
-                                "Infected",
-                                style: TextStyle(
-                                    color: kInfectedColor,
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
+                          child: Counter(
+                            color: kInfectedColor,
+                            number: countryInfected,
+                            title: "Infected",
                           ),
                         ),
                         Expanded(
-                          child: Column(
-                            children: <Widget>[
-                              Text(countryDeaths),
-                              Text(
-                                "Deaths",
-                                style: TextStyle(
-                                    color: kDeathColor,
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
+                          child: Counter(
+                            color: kDeathColor,
+                            number: countryDeaths,
+                            title: "Deaths",
                           ),
                         ),
                         Expanded(
-                          child: Column(
-                            children: <Widget>[
-                              Text(countryRecovered),
-                              Text(
-                                "Recovered",
-                                style: TextStyle(
-                                    color: kRecovercolor,
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
+                          child: Counter(
+                            color: kRecovercolor,
+                            number: countryRecovered,
+                            title: "Recovered",
                           ),
                         ),
                       ],
