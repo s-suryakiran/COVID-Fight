@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 //import 'status_updation.dart';
 import 'home_screen.dart';
-import 'chatbot.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

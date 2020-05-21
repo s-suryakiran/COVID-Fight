@@ -36,6 +36,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
       for (var i in table) {
         countryNames.add(i['Country']);
       }
+
       countryNames.sort();});
   }
 
