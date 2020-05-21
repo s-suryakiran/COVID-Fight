@@ -10,6 +10,7 @@ import 'animated_bar.dart';
 import 'chatbot_chat.dart';
 import 'placeholder_widget.dart';
 import 'status_updation.dart';
+import 'self_diagnosis_home.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -126,7 +127,11 @@ class Home extends StatelessWidget {
                             child: RaisedButton(
                               color: Colors.blue,
                               //TODO: 1.Self Diagnosis page
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                  return (SelfDiagnosisHome());
+                                }));
+                              },
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)),
                               child: Container(

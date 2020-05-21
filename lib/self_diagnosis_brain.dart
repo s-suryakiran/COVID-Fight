@@ -1,8 +1,9 @@
 import 'self_diagnosis.dart';
 
 class StoryBrain {
-  int _symptomNumber = 0;
-  List<SelfDiagnosis> _storyData = [
+//  List<int> _currentQuestion=0 ;
+//  List<int> _nextQuestion =0;
+  List<SelfDiagnosis> _questions = [
     //type 1=> yes or no
     //type 2=> single choice selection
     //type 3=> multiple choice selection
@@ -440,49 +441,49 @@ class StoryBrain {
     //57
     //TODO
     SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
-//    Story(
-//        storyTitle:
-//        'You bond with the murderer while crooning verses of "Can you feel the love tonight". He drops you off at the next town. Before you go he asks you if you know any good places to dump bodies. You reply: "Try the pier".',
-//        choice1: 'Restart',
-//        choice2: '')
+
   ];
-  String getStory() {
-    return _storyData[_symptomNumber].questionTitle;
-  }
-
-  String getChoice1() {
-    return _storyData[_symptomNumber].choice1;
-  }
-
-  String getChoice2() {
-    return _storyData[_symptomNumber].choice2;
-  }
-
-  void nextStory(int choiceNumber) {
-    if (choiceNumber == 1 && _symptomNumber == 0)
-      _symptomNumber = 2;
-    else if (choiceNumber == 2 && _symptomNumber == 0)
-      _symptomNumber = 1;
-    else if (choiceNumber == 1 && _symptomNumber == 1)
-      _symptomNumber = 2;
-    else if (choiceNumber == 2 && _symptomNumber == 1)
-      _symptomNumber = 3;
-    else if (choiceNumber == 1 && _symptomNumber == 2)
-      _symptomNumber = 5;
-    else if (choiceNumber == 2 && _symptomNumber == 2)
-      _symptomNumber = 4;
-    else
-      restart();
-  }
-
-  void restart() {
-    _symptomNumber = 0;
-  }
-
-  bool buttonShouldBeVisible() {
-    if (_symptomNumber == 0 || _symptomNumber == 1 || _symptomNumber == 2)
-      return true;
-    else
-      return false;
-  }
+//  String getQuestion() {
+//    return _questions[_currentQuestion].questionTitle;
+//  }
+//
+//  void nextStory(List<int> answer, List<int> _currentQuestion, String type) {
+//    _nextQuestion = [];
+//    switch (_currentQuestion) {
+//      case [3]:
+//        {
+//          switch (answer) {
+//            case [-1]:
+//              _nextQuestion.add(4);
+//              break;
+//            case [0, 1]:
+//              _nextQuestion.addAll([11, 12, 13, 14]);
+//              break;
+//            case [0]:
+//              _nextQuestion.add(31);
+//              break;
+//            case [1]:
+//              _nextQuestion.add(30);
+//              break;
+//            default:
+//              {
+//                if (answer == [0, 2] || answer == [0, 1, 2])
+//                  _nextQuestion.add(26);
+//                else if (answer == [0, 2, 3]) _nextQuestion.add(44);
+//              }
+//          }
+//        }break;
+//    }
+//  }
+//
+//  void restart() {
+//    _currentQuestion = 0;
+//  }
+//
+//  bool buttonShouldBeVisible() {
+//    if (_currentQuestion == 0 || _currentQuestion == 1 || _currentQuestion == 2)
+//      return true;
+//    else
+//      return false;
+//  }
 }

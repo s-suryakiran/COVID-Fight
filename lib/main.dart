@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-      home: Register(),
+      home: HomeScreen(),
 //      home:HomeScreen(),
 //    home: StatusUpdation(),
 //        routes: {
