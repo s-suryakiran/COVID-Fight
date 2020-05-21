@@ -252,7 +252,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 80),
                 ],
               ),
             ),
