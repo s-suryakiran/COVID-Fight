@@ -20,7 +20,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
   String countryInfected = '-';
   String countryDeaths = '-';
   String countryRecovered = '-';
-  String Value = "Indonesia";
+  String Value = "World";
   List<String> countryNames = new List();
 
   void getData() async {

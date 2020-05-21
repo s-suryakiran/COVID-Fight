@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:watson_assistant_v2/watson_assistant_v2.dart';
 import 'chat_message.dart';
+
 class Chatbot extends StatefulWidget {
   Chatbot({Key key, this.title}) : super(key: key);
 
@@ -15,7 +16,7 @@ class _ChatbotState extends State<Chatbot> {
   WatsonAssistantApiV2 watsonAssistant;
   WatsonAssistantResponse watsonAssistantResponse;
   WatsonAssistantContext watsonAssistantContext =
-  WatsonAssistantContext(context: {});
+      WatsonAssistantContext(context: {});
 
   final _textController = TextEditingController();
   final List<ChatMessage> _messages = <ChatMessage>[];
@@ -29,6 +30,7 @@ class _ChatbotState extends State<Chatbot> {
     watsonAssistantContext = watsonAssistantResponse.context;
     _textController.clear();
   }
+
   Widget _buildTextComposer() {
     return new IconTheme(
       data: new IconThemeData(color: Theme.of(context).accentColor),
@@ -41,7 +43,7 @@ class _ChatbotState extends State<Chatbot> {
                 controller: _textController,
                 onSubmitted: _handleSubmitted,
                 decoration:
-                new InputDecoration.collapsed(hintText: "Send a message"),
+                    new InputDecoration.collapsed(hintText: "Send a message"),
               ),
             ),
             new Container(
@@ -58,13 +60,12 @@ class _ChatbotState extends State<Chatbot> {
 
   void getResponse(query) async {
     _textController.clear();
-    watsonAssistantResponse = await watsonAssistant.sendMessage(
-        query, watsonAssistantContext);
+    watsonAssistantResponse =
+        await watsonAssistant.sendMessage(query, watsonAssistantContext);
     _text = watsonAssistantResponse.resultText;
     watsonAssistantContext = watsonAssistantResponse.context;
     ChatMessage message = new ChatMessage(
-      text: watsonAssistantResponse.resultText ??
-          "no response",
+      text: watsonAssistantResponse.resultText ?? "no response",
       name: "Bot",
       type: false,
     );
@@ -73,8 +74,8 @@ class _ChatbotState extends State<Chatbot> {
     });
   }
 
-
   void _handleSubmitted(String text) {
+
     _textController.clear();
     ChatMessage message = new ChatMessage(
       text: text,
@@ -93,12 +94,13 @@ class _ChatbotState extends State<Chatbot> {
     watsonAssistant = WatsonAssistantApiV2(
         watsonAssistantCredential: WatsonAssistantV2Credential(
             username: 'apikey',
-            apikey: 'jscOX35ToavABi423ZTClYKB6K7Rs0sxnFW4osnSX_gz',
-            assistantID: 'c2d0939d-b2b3-47df-848b-4f03c7bff066',
-            url: 'https://api.us-south.assistant.watson.cloud.ibm.com/instances/9c3f5334-9ae1-4b6d-8fc4-56176e38bca5/v2'
+            apikey: 'Z7PJ-Fz7Y67qSKSgXZxR8EvvX2cuR-DGXl9nkJmN6kLY',
+            assistantID: 'ee6e952e-2521-4d03-82e3-46ee2ebfa858',
+            url: 'https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/60d1e6fa-42ba-4a2e-9d4f-fae78ed68966/v2'));
+    _callWatsonAssistant();
 
-        ));
   }
+
   @override
   void dispose() {
     _textController.dispose();
@@ -115,11 +117,11 @@ class _ChatbotState extends State<Chatbot> {
       body: new Column(children: <Widget>[
         new Flexible(
             child: new ListView.builder(
-              padding: new EdgeInsets.all(8.0),
-              reverse: true,
-              itemBuilder: (_, int index) => _messages[index],
-              itemCount: _messages.length,
-            )),
+          padding: new EdgeInsets.all(8.0),
+          reverse: true,
+          itemBuilder: (_, int index) => _messages[index],
+          itemCount: _messages.length,
+        )),
         new Divider(height: 1.0),
         new Container(
           decoration: new BoxDecoration(color: Theme.of(context).cardColor),
