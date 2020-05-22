@@ -105,7 +105,7 @@ class Type2 extends StatefulWidget {
   _Type2State createState() => _Type2State();
 }
 
-class _Type2State extends State<Type3> {
+class _Type2State extends State<Type2> {
   List<String> str;
   String _option;
 
