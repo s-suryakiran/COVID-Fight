@@ -69,6 +69,8 @@ class _ChatbotState extends State<Chatbot> {
       name: "Bot",
       type: false,
     );
+    print(query);
+    print(watsonAssistantResponse);
     setState(() {
       _messages.insert(0, message);
     });

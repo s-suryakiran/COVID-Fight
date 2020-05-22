@@ -1,3 +1,4 @@
+import 'package:CovidFight/self_diagnosis_brain.dart';
 import 'package:CovidFight/status_updation.dart';
 import 'home.dart';
 import 'constants.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 //import 'status_updation.dart';
 import 'home_screen.dart';
 import 'register.dart';
+import 'self_diagnosis_ui.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-      home: HomeScreen(),
+      home: Type1(),
 //      home:HomeScreen(),
 //    home: StatusUpdation(),
 //        routes: {

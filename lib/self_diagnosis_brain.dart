@@ -1,8 +1,8 @@
 import 'self_diagnosis.dart';
 
 class StoryBrain {
-//  List<int> _currentQuestion=0 ;
-//  List<int> _nextQuestion =0;
+  List<int> _currentQuestion;
+  List<int> _nextQuestion ;
   List<SelfDiagnosis> _questions = [
     //type 1=> yes or no
     //type 2=> single choice selection
@@ -443,47 +443,47 @@ class StoryBrain {
     SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
 
   ];
-//  String getQuestion() {
-//    return _questions[_currentQuestion].questionTitle;
-//  }
-//
-//  void nextStory(List<int> answer, List<int> _currentQuestion, String type) {
-//    _nextQuestion = [];
-//    switch (_currentQuestion) {
-//      case [3]:
-//        {
-//          switch (answer) {
-//            case [-1]:
-//              _nextQuestion.add(4);
-//              break;
-//            case [0, 1]:
-//              _nextQuestion.addAll([11, 12, 13, 14]);
-//              break;
-//            case [0]:
-//              _nextQuestion.add(31);
-//              break;
-//            case [1]:
-//              _nextQuestion.add(30);
-//              break;
-//            default:
-//              {
-//                if (answer == [0, 2] || answer == [0, 1, 2])
-//                  _nextQuestion.add(26);
-//                else if (answer == [0, 2, 3]) _nextQuestion.add(44);
-//              }
-//          }
-//        }break;
-//    }
-//  }
-//
+  String getQuestion() {
+    return _questions[0].questionTitle;
+  }
+
+  void nextStory(List<int> answer, List<int> _currentQuestion, String type) {
+    _nextQuestion = [];
+    switch (_currentQuestion) {
+      case [3]:
+        {
+          switch (answer) {
+            case [-1]:
+              _nextQuestion.add(4);
+              break;
+            case [0, 1]:
+              _nextQuestion.addAll([11, 12, 13, 14]);
+              break;
+            case [0]:
+              _nextQuestion.add(31);
+              break;
+            case [1]:
+              _nextQuestion.add(30);
+              break;
+            default:
+              {
+                if (answer == [0, 2] || answer == [0, 1, 2])
+                  _nextQuestion.add(26);
+                else if (answer == [0, 2, 3]) _nextQuestion.add(44);
+              }
+          }
+        }break;
+    }
+  }
+
 //  void restart() {
 //    _currentQuestion = 0;
 //  }
-//
-//  bool buttonShouldBeVisible() {
-//    if (_currentQuestion == 0 || _currentQuestion == 1 || _currentQuestion == 2)
-//      return true;
-//    else
-//      return false;
-//  }
+
+  bool buttonShouldBeVisible() {
+    if (_currentQuestion == 0 || _currentQuestion == 1 || _currentQuestion == 2)
+      return true;
+    else
+      return false;
+  }
 }
