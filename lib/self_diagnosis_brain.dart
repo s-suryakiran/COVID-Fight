@@ -2,9 +2,9 @@ import 'self_diagnosis.dart';
 
 class StoryBrain {
   List<int> answer;
-  int currentQuestion;
+  int currentQuestion=0;
   int nextQuestion;
-  bool redFlag,stopFlag=false,lead = false;
+  bool redFlag, stopFlag = false, lead = false;
   int age;
 
   //type 1=> yes or no
@@ -15,12 +15,13 @@ class StoryBrain {
   List<SelfDiagnosis> _questions = [
 //    1
     SelfDiagnosis(
-        type: 3,
-        questionTitle: 'Please check all statements that apply to you. ',
-        choice1: 'Current cancer',
-        choice2: 'Diseases or drugs that weaken immune system',
-        choice3: 'Obesity',
-        choice4: 'Long-term stay at care facility or nursing home'),
+      type: 3,
+      questionTitle: 'Please check all statements that apply to you. ',
+      choice1: 'Current cancer',
+      choice2: 'Diseases or drugs that weaken immune system',
+      choice4: 'Long-term stay at care facility or nursing home',
+      choice3: 'Obesity',
+    ),
 //    2
     SelfDiagnosis(
         type: 3,
@@ -445,17 +446,15 @@ class StoryBrain {
     //57
     //TODO
     SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
-
   ];
 
   void nextStory() {
-
     switch (currentQuestion) {
       case 3:
         {
           switch (answer) {
             case [-1]:
-             nextQuestion = 4;
+              nextQuestion = 4;
               break;
             case [0, 1]:
               nextQuestion = 11;
@@ -464,126 +463,176 @@ class StoryBrain {
               nextQuestion = 31;
               break;
             case [1]:
-              nextQuestion=32;
+              nextQuestion = 32;
               break;
             default:
               {
-                if (!answer.contains(0) && answer==[2])
+                if (!answer.contains(0) && answer == [2])
                   nextQuestion = 46;
-                else if (answer==[0,2] || answer==[0,1,2])
+                else if (answer == [0, 2] || answer == [0, 1, 2])
                   nextQuestion = 26;
               }
           }
-        }break;
-
-      case 4:{
-        if(answer.contains(7))
-          redFlag=true;
-        if(answer==[-1] || answer==[0])
-          nextQuestion =5;
-        //TODO please check
-        else if(!answer.contains(0))
-          nextQuestion = 6;
-      }break;
-
-      case 5:{
-        switch(answer){
-          case [0]:
-          case[1]:
-          case[2]:{
-            nextQuestion=9;
-            redFlag = true;
-            stopFlag = true;
-        }break;
-          case[3]:
-          case[4]:{
-            nextQuestion=10;
-            stopFlag=true;
-          }break;
         }
-      }break;
+        break;
 
-      case 6:{
-        switch(answer){
-          case [0]:
-          case[1]:
-          case[2]:{
-            nextQuestion=7;
-            redFlag = true;
-            stopFlag = true;
-          }break;
-          case[3]:
-          case[4]:{
-            nextQuestion=8;
-            stopFlag=true;
-          }break;
+      case 4:
+        {
+          if (answer.contains(7)) redFlag = true;
+          if (answer == [-1] || answer == [0])
+            nextQuestion = 5;
+          //TODO please check
+          else if (!answer.contains(0)) nextQuestion = 6;
         }
-      }break;
+        break;
+
+      case 5:
+        {
+          switch (answer) {
+            case [0]:
+            case [1]:
+            case [2]:
+              {
+                nextQuestion = 9;
+                redFlag = true;
+                stopFlag = true;
+              }
+              break;
+            case [3]:
+            case [4]:
+              {
+                nextQuestion = 10;
+                stopFlag = true;
+              }
+              break;
+          }
+        }
+        break;
+
+      case 6:
+        {
+          switch (answer) {
+            case [0]:
+            case [1]:
+            case [2]:
+              {
+                nextQuestion = 7;
+                redFlag = true;
+                stopFlag = true;
+              }
+              break;
+            case [3]:
+            case [4]:
+              {
+                nextQuestion = 8;
+                stopFlag = true;
+              }
+              break;
+          }
+        }
+        break;
 
 //      TODO: handle questions 11,12,13,14
-      case 15:{
-        if(answer.contains(7))
-          redFlag=true;
-        if(answer==[-1] || answer==[0])
-          nextQuestion =21;
-        //TODO please check
-        else if(!answer.contains(0))
-          nextQuestion = 16;
-      }break;
-
-      case 16:{
-        nextQuestion = (answer==[1])?20:17;
-        if(nextQuestion==20)
-          stopFlag=true;
-      }break;
-
-      case 21:{
-        nextQuestion = (answer==[1])?20:22;
-        if(nextQuestion==20)
-          stopFlag=true;
-      }break;
-
-      case 17:{
-        switch(answer){
-          case [0]:
-          case[1]:
-          case[2]:{
-            nextQuestion=18;
-            redFlag = true;
-            stopFlag = true;
-          }break;
-          case[3]:
-          case[4]:{
-            nextQuestion=19;
-            stopFlag=true;
-          }break;
+      case 15:
+        {
+          if (answer.contains(7)) redFlag = true;
+          if (answer == [-1] || answer == [0])
+            nextQuestion = 21;
+          //TODO please check
+          else if (!answer.contains(0)) nextQuestion = 16;
         }
-      }break;
+        break;
 
-      case 22:{
-        switch(answer){
-          case [0]:
-          case[1]:
-          case[2]:{
-            nextQuestion=23;
-            redFlag = true;
-            stopFlag = true;
-          }break;
-          case[3]:
-          case[4]:{
-            nextQuestion=24;
-            if(!(redFlag==true && age>65))
-              stopFlag = true;
-          }break;
+      case 16:
+        {
+          nextQuestion = (answer == [1]) ? 20 : 17;
+          if (nextQuestion == 20) stopFlag = true;
         }
-      }break;
-      case 24:{
-        nextQuestion = 25;
-        stopFlag=true;
-      }break;
+        break;
 
-    }//switch ends
-  }//function ends
+      case 21:
+        {
+          nextQuestion = (answer == [1]) ? 20 : 22;
+          if (nextQuestion == 20) stopFlag = true;
+        }
+        break;
 
+      case 17:
+        {
+          switch (answer) {
+            case [0]:
+            case [1]:
+            case [2]:
+              {
+                nextQuestion = 18;
+                redFlag = true;
+                stopFlag = true;
+              }
+              break;
+            case [3]:
+            case [4]:
+              {
+                nextQuestion = 19;
+                stopFlag = true;
+              }
+              break;
+          }
+        }
+        break;
 
+      case 22:
+        {
+          switch (answer) {
+            case [0]:
+            case [1]:
+            case [2]:
+              {
+                nextQuestion = 23;
+                redFlag = true;
+                stopFlag = true;
+              }
+              break;
+            case [3]:
+            case [4]:
+              {
+                nextQuestion = 24;
+                if (!(redFlag == true && age > 65)) stopFlag = true;
+              }
+              break;
+          }
+        }
+        break;
+      case 24:
+        {
+          nextQuestion = 25;
+          stopFlag = true;
+        }
+        break;
+    } //switch ends
+  } //function ends
+
+  String getQuestion() {
+    return _questions[currentQuestion].questionTitle;
+  }
+
+  List<String> getOptions() {
+    List<String> options = new List();
+    if (_questions[currentQuestion].choice1 != "")
+      options.add(_questions[currentQuestion].choice1);
+    if (_questions[currentQuestion].choice2 != "")
+      options.add(_questions[currentQuestion].choice2);
+    if (_questions[currentQuestion].choice3 != "")
+      options.add(_questions[currentQuestion].choice3);
+    if (_questions[currentQuestion].choice4 != "")
+      options.add(_questions[currentQuestion].choice4);
+    if (_questions[currentQuestion].choice5 != "")
+      options.add(_questions[currentQuestion].choice5);
+    if (_questions[currentQuestion].choice6 != "")
+      options.add(_questions[currentQuestion].choice6);
+    if (_questions[currentQuestion].choice7 != "")
+      options.add(_questions[currentQuestion].choice7);
+    if (_questions[currentQuestion].choice8 != "")
+      options.add(_questions[currentQuestion].choice8);
+    return options;
+  }
 }
