@@ -1,15 +1,19 @@
 import 'self_diagnosis.dart';
 
 class StoryBrain {
-//  List<int> _currentQuestion=0 ;
-//  List<int> _nextQuestion =0;
-  List<SelfDiagnosis> _questions = [
-    //type 1=> yes or no
-    //type 2=> single choice selection
-    //type 3=> multiple choice selection
-    //type 4=>result
+  List<int> answer;
+  int currentQuestion;
+  int nextQuestion;
+  bool redFlag,stopFlag=false,lead = false;
+  int age;
 
-    //1
+  //type 1=> yes or no
+  //type 2=> single choice selection
+  //type 3=> multiple choice selection
+  //type 4=>result
+
+  List<SelfDiagnosis> _questions = [
+//    1
     SelfDiagnosis(
         type: 3,
         questionTitle: 'Please check all statements that apply to you. ',
@@ -17,7 +21,7 @@ class StoryBrain {
         choice2: 'Diseases or drugs that weaken immune system',
         choice3: 'Obesity',
         choice4: 'Long-term stay at care facility or nursing home'),
-    //2
+//    2
     SelfDiagnosis(
         type: 3,
         questionTitle: 'Please check all statements that apply to you.',
@@ -443,47 +447,143 @@ class StoryBrain {
     SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
 
   ];
-//  String getQuestion() {
-//    return _questions[_currentQuestion].questionTitle;
-//  }
-//
-//  void nextStory(List<int> answer, List<int> _currentQuestion, String type) {
-//    _nextQuestion = [];
-//    switch (_currentQuestion) {
-//      case [3]:
-//        {
-//          switch (answer) {
-//            case [-1]:
-//              _nextQuestion.add(4);
-//              break;
-//            case [0, 1]:
-//              _nextQuestion.addAll([11, 12, 13, 14]);
-//              break;
-//            case [0]:
-//              _nextQuestion.add(31);
-//              break;
-//            case [1]:
-//              _nextQuestion.add(30);
-//              break;
-//            default:
-//              {
-//                if (answer == [0, 2] || answer == [0, 1, 2])
-//                  _nextQuestion.add(26);
-//                else if (answer == [0, 2, 3]) _nextQuestion.add(44);
-//              }
-//          }
-//        }break;
-//    }
-//  }
-//
-//  void restart() {
-//    _currentQuestion = 0;
-//  }
-//
-//  bool buttonShouldBeVisible() {
-//    if (_currentQuestion == 0 || _currentQuestion == 1 || _currentQuestion == 2)
-//      return true;
-//    else
-//      return false;
-//  }
+
+  void nextStory() {
+
+    switch (currentQuestion) {
+      case 3:
+        {
+          switch (answer) {
+            case [-1]:
+             nextQuestion = 4;
+              break;
+            case [0, 1]:
+              nextQuestion = 11;
+              break;
+            case [0]:
+              nextQuestion = 31;
+              break;
+            case [1]:
+              nextQuestion=32;
+              break;
+            default:
+              {
+                if (!answer.contains(0) && answer==[2])
+                  nextQuestion = 46;
+                else if (answer==[0,2] || answer==[0,1,2])
+                  nextQuestion = 26;
+              }
+          }
+        }break;
+
+      case 4:{
+        if(answer.contains(7))
+          redFlag=true;
+        if(answer==[-1] || answer==[0])
+          nextQuestion =5;
+        //TODO please check
+        else if(!answer.contains(0))
+          nextQuestion = 6;
+      }break;
+
+      case 5:{
+        switch(answer){
+          case [0]:
+          case[1]:
+          case[2]:{
+            nextQuestion=9;
+            redFlag = true;
+            stopFlag = true;
+        }break;
+          case[3]:
+          case[4]:{
+            nextQuestion=10;
+            stopFlag=true;
+          }break;
+        }
+      }break;
+
+      case 6:{
+        switch(answer){
+          case [0]:
+          case[1]:
+          case[2]:{
+            nextQuestion=7;
+            redFlag = true;
+            stopFlag = true;
+          }break;
+          case[3]:
+          case[4]:{
+            nextQuestion=8;
+            stopFlag=true;
+          }break;
+        }
+      }break;
+
+//      TODO: handle questions 11,12,13,14
+      case 15:{
+        if(answer.contains(7))
+          redFlag=true;
+        if(answer==[-1] || answer==[0])
+          nextQuestion =21;
+        //TODO please check
+        else if(!answer.contains(0))
+          nextQuestion = 16;
+      }break;
+
+      case 16:{
+        nextQuestion = (answer==[1])?20:17;
+        if(nextQuestion==20)
+          stopFlag=true;
+      }break;
+
+      case 21:{
+        nextQuestion = (answer==[1])?20:22;
+        if(nextQuestion==20)
+          stopFlag=true;
+      }break;
+
+      case 17:{
+        switch(answer){
+          case [0]:
+          case[1]:
+          case[2]:{
+            nextQuestion=18;
+            redFlag = true;
+            stopFlag = true;
+          }break;
+          case[3]:
+          case[4]:{
+            nextQuestion=19;
+            stopFlag=true;
+          }break;
+        }
+      }break;
+
+      case 22:{
+        switch(answer){
+          case [0]:
+          case[1]:
+          case[2]:{
+            nextQuestion=23;
+            redFlag = true;
+            stopFlag = true;
+          }break;
+          case[3]:
+          case[4]:{
+            nextQuestion=24;
+            if(!(redFlag==true && age>65))
+              stopFlag = true;
+          }break;
+        }
+      }break;
+      case 24:{
+        nextQuestion = 25;
+        stopFlag=true;
+      }break;
+
+    }//switch ends
+  }//function ends
+
+
 }
