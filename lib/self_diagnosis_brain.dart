@@ -448,6 +448,10 @@ class StoryBrain {
 
   ];
 
+  String getQuestion(){
+    return _questions[currentQuestion].questionTitle;
+  }
+
   void nextStory() {
 
     switch (currentQuestion) {
