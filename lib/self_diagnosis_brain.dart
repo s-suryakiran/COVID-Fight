@@ -448,10 +448,6 @@ class StoryBrain {
     SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
   ];
 
-  String getQuestion(){
-    return _questions[currentQuestion].questionTitle;
-  }
-
   void nextStory() {
     switch (currentQuestion) {
       case 3:
