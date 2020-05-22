@@ -2,7 +2,7 @@ import 'self_diagnosis.dart';
 
 class StoryBrain {
   List<int> answer;
-  int currentQuestion=0;
+  int currentQuestion=3;
   int nextQuestion;
   bool redFlag, stopFlag = false, lead = false;
   int age;

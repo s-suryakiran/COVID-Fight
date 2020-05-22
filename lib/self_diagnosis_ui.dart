@@ -105,7 +105,7 @@ class Type2 extends StatefulWidget {
   _Type2State createState() => _Type2State();
 }
 
-class _Type2State extends State<Type2> {
+class _Type2State extends State<Type3> {
   List<String> str;
   String _option;
 
@@ -139,7 +139,10 @@ class _Type2State extends State<Type2> {
         widgets.add(Expanded(
           child: RaisedButton(
             onPressed: () {
-              //TODO:next question
+              setState(() {
+                storyBrain.nextStory();
+                storyBrain.getQuestion();
+              });
             },
             child: Text(
               "NEXT",
@@ -154,6 +157,92 @@ class _Type2State extends State<Type2> {
             color: Colors.purple[500],
           ),
         ));
+    return widgets;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    str = storyBrain.getOptions();
+    _option = str.first;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.purple[100],
+      appBar: AppBar(
+        title: Text("Self-Diagnosis"),
+        backgroundColor: Colors.purple,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: createRadioList(),
+        ),
+      ),
+    );
+  }
+}
+class Type3 extends StatefulWidget {
+  @override
+  _Type3State createState() => _Type3State();
+}
+
+class _Type3State extends State<Type3> {
+  List<String> str;
+  String _option;
+
+  List<Widget> createRadioList() {
+    List<Widget> widgets = [];
+    widgets.add(Expanded(
+      flex: 6,
+      child: Center(
+        child: Text(
+          storyBrain.getQuestion(),
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    ));
+    for (String Str in str) {
+      widgets.add(Expanded(
+        child: CheckboxListTile(
+          title: Text(Str),
+          value: Str,
+
+          onChanged: (value) {
+            setState(() {
+              _option = value;
+            });
+          },
+        ),
+      ));
+    }
+    widgets.add(Expanded(child: SizedBox()));
+    widgets.add(Expanded(
+      child: RaisedButton(
+        onPressed: () {
+          setState(() {
+            storyBrain.nextStory();
+            storyBrain.getQuestion();
+          });
+        },
+        child: Text(
+          "NEXT",
+          style: TextStyle(
+              fontSize: 20,
+              letterSpacing: 3,
+              color: Colors.white,
+              fontWeight: FontWeight.bold),
+        ),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15)),
+        color: Colors.purple[500],
+      ),
+    ));
     return widgets;
   }
 
