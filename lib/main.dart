@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-      home: Type3(),
+      home: Type4(),
 //      home:HomeScreen(),
 //    home: StatusUpdation(),
 //        routes: {

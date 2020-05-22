@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'self_diagnosis_brain.dart';
 import 'self_diagnosis.dart';
-
+import 'package:grouped_buttons/grouped_buttons.dart';
 bool checkValue = false;
 StoryBrain storyBrain = new StoryBrain();
 enum TypeOne { yes, no }
@@ -194,36 +194,32 @@ class Type3 extends StatefulWidget {
 class _Type3State extends State<Type3> {
   List<String> str;
   String _option;
+  bool checked=false;
 
   List<Widget> createRadioList() {
     List<Widget> widgets = [];
-    widgets.add(Expanded(
-      flex: 6,
-      child: Center(
-        child: Text(
-          storyBrain.getQuestion(),
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
-        ),
+    widgets.add(SizedBox(height:40));
+    widgets.add(Center(
+      child: Text(
+        storyBrain.getQuestion(),
+        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        textAlign: TextAlign.center,
       ),
-    ));
-    for (String Str in str) {
-      widgets.add(Expanded(
-        child: CheckboxListTile(
-          title: Text(Str),
-          value: Str,
+    ),);
+    widgets.add(SizedBox(height:20));
+      widgets.add(CheckboxGroup(
+        labels: str,
+        onChange:(bool isChecked,String label,int index) {
 
-          onChanged: (value) {
-            setState(() {
-              _option = value;
-            });
-          },
-        ),
+        },
       ));
-    }
-    widgets.add(Expanded(child: SizedBox()));
-    widgets.add(Expanded(
+
+    widgets.add(SizedBox(height:20));
+    widgets.add(ButtonTheme(
+      minWidth: double.infinity,
+      height: 60,
       child: RaisedButton(
+
         onPressed: () {
           setState(() {
             storyBrain.nextStory();
@@ -261,13 +257,54 @@ class _Type3State extends State<Type3> {
         title: Text("Self-Diagnosis"),
         backgroundColor: Colors.purple,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: createRadioList(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+
+            children: createRadioList(),
+          ),
         ),
+      ),
+    );
+  }
+}
+class Type4 extends StatefulWidget {
+  @override
+  _Type4State createState() => _Type4State();
+}
+
+class _Type4State extends State<Type4> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title:Text("Result"),backgroundColor: Colors.purple,),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(storyBrain.getResult(),style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,),
+          SizedBox(
+            height: 20,
+          ),
+          RaisedButton(
+            onPressed: () {
+              //TODO:next question
+            },
+            child: Text(
+              "FINISH",
+              style: TextStyle(
+                  fontSize: 20,
+                  letterSpacing: 3,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15)),
+            color: Colors.purple[500],
+          )
+
+        ],
       ),
     );
   }
