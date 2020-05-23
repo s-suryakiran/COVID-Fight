@@ -16,13 +16,15 @@ class StoryBrain {
 
   List<SelfDiagnosis> _questions = [
     SelfDiagnosis(type: 1, questionTitle: 'dummy1'),
+    SelfDiagnosis(type: 1, questionTitle: 'dummy1'),
+    SelfDiagnosis(type: 1, questionTitle: 'dummy1'),
 //    1
     SelfDiagnosis(
       type: 3,
       questionTitle: 'Please check all statements that apply to you. ',
       choice1: 'Current cancer',
-      choice2: 'Diseases or drugs that weaken immune system',
-      choice4: 'Long-term stay at care facility or nursing home',
+      choice2: 'Diseases or drugs that weaken immune \nsystem',
+      choice4: 'Long-term stay at care facility or nursing \nhome',
       choice3: 'Obesity',
     ),
 //    2

@@ -133,11 +133,7 @@ class Home extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Type3(
-                                                questionNumber: 3,
-                                                question: brain.getQuestion(3),
-                                                str: brain.getOptions(3),
-                                              )));
+                                          builder: (context) => SelfDiagnosisHome()));
                                 }
                               },
                               shape: RoundedRectangleBorder(

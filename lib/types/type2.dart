@@ -113,7 +113,7 @@ class _Type2State extends State<Type2> {
               fontWeight: FontWeight.bold),
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        color: Colors.teal[500],
+        color: Colors.blue[500],
       ),
     ));
     return widgets;
@@ -123,10 +123,10 @@ class _Type2State extends State<Type2> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: Colors.teal[100],
+      backgroundColor: Colors.blue[100],
       appBar: AppBar(
         title: Text("Self-Diagnosis"),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.blue,
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),

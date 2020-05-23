@@ -250,11 +250,11 @@ class Type3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
 //      backgroundColor: Colors.purple[100],
-    backgroundColor: Colors.teal[100],
+    backgroundColor: Colors.blue[100],
       appBar: AppBar(
         title: Text("Self-Diagnosis"),
 //        backgroundColor: Colors.purple,
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -328,7 +328,7 @@ class Type3 extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-              color: Colors.teal[500],
+              color: Colors.blue[500],
             ),
           )
             ],
@@ -381,8 +381,8 @@ print(index);
 
         onPressed: () {
           setState(() {
-//            storyBrain.nextStory();
-//            storyBrain.getQuestion();
+            storyBrain.nextStory();
+            storyBrain.getQuestion();
           });
         },
         child: Text(
