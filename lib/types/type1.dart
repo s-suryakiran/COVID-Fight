@@ -32,9 +32,9 @@ class _Type1State extends State<Type1> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Self-Diagnosis"),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.teal,
       ),
-      backgroundColor: Colors.purple[100],
+      backgroundColor: Colors.teal[100],
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -148,7 +148,7 @@ class _Type1State extends State<Type1> {
                 ),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15)),
-                color: Colors.purple[500],
+                color: Colors.teal[500],
               ),
             )
           ],

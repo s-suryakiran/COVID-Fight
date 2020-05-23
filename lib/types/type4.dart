@@ -32,7 +32,7 @@ class _Type4State extends State<Type4> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Result"),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.teal,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +62,7 @@ class _Type4State extends State<Type4> {
             ),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            color: Colors.purple[500],
+            color: Colors.teal[500],
           )
         ],
       ),
