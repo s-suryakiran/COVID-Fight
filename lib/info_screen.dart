@@ -2,21 +2,32 @@ import 'constants.dart';
 import 'header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'counter.dart';
+import 'extract_data_from_web.dart';
+import 'package:after_layout/after_layout.dart';
 class InfoScreen extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
 }
 
 class _InfoScreenState extends State<InfoScreen> {
+  var state;
+  bool _isVisible = false;
+  String countryInfected = "-";
+  String countryDeaths = "-";
+  String countryRecovered = "-";
+  String Value;
   final controller = ScrollController();
   double offset = 0;
 
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
+
+    getData();
     controller.addListener(onScroll);
+
+
   }
 
   @override
@@ -32,6 +43,82 @@ class _InfoScreenState extends State<InfoScreen> {
     });
   }
 
+  void getData() async {
+    NetworkHelper nw = NetworkHelper('https://api.covid19india.org/data.json');
+
+    var data = await nw.getData();
+    //print(data);
+
+    setState(() {
+      state = data["statewise"];
+      _isVisible = !_isVisible;
+//      print(state);
+    });
+  }
+
+  List<Widget> getStateInfo() {
+    List<Widget> st = new List();
+    for (var i in state) {
+      if (i["state"] != "Total") {
+        countryInfected = i["confirmed"].toString();
+        countryDeaths = i["deaths"].toString();
+        countryRecovered = i["recovered"].toString();
+        st.add(SizedBox(height: 20));
+        st.add(Container(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              i["state"].toString(),
+              style: TextStyle(fontSize: 18),
+            )));
+        st.add(SizedBox(height: 10));
+
+        st.add(
+          Container(
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 4),
+                  blurRadius: 30,
+                  color: kShadowColor,
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Expanded(
+                  child: Counter(
+                    color: kInfectedColor,
+                    number: countryInfected,
+                    title: "Infected",
+                  ),
+                ),
+                Expanded(
+                  child: Counter(
+                    color: kDeathColor,
+                    number: countryDeaths,
+                    title: "Deaths",
+                  ),
+                ),
+                Expanded(
+                  child: Counter(
+                    color: kRecovercolor,
+                    number: countryRecovered,
+                    title: "Recovered",
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+    return st;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +127,9 @@ class _InfoScreenState extends State<InfoScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            MyHeader(
-              textTop: "Get to know",
-              textBottom: "About Covid-19.",
+            InfoHeader(
+              textTop: "",
+              textBottom: "",
               offset: offset,
             ),
             Padding(
@@ -51,47 +138,16 @@ class _InfoScreenState extends State<InfoScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Symptoms",
-                    style: kTitleTextstyle,
+                    "State-wise",
+                    style: kTitleTextstyle.copyWith(fontSize: 30),
                   ),
-                  SizedBox(height: 20),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        SymptomCard(
-                          image: "assets/images/headache.png",
-                          title: "Headache",
-                          isActive: true,
-                        ),
-                        SymptomCard(
-                          image: "assets/images/caugh.png",
-                          title: "Caugh",
-                        ),
-                        SymptomCard(
-                          image: "assets/images/fever.png",
-                          title: "Fever",
-                        ),
-                      ],
+                  Visibility(
+                    visible: _isVisible,
+                    child: Column(
+                      children: getStateInfo(),
                     ),
                   ),
-                  SizedBox(height: 20),
-                  Text("Prevention", style: kTitleTextstyle),
-                  SizedBox(height: 20),
-                  PreventCard(
-                    text:
-                    "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
-                    image: "assets/images/wear_mask.png",
-                    title: "Wear face mask",
-                  ),
-                  PreventCard(
-                    text:
-                    "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
-                    image: "assets/images/wash_hands.png",
-                    title: "Wash your hands",
-                  ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 80),
                 ],
               ),
             )
@@ -102,74 +158,61 @@ class _InfoScreenState extends State<InfoScreen> {
   }
 }
 
-class PreventCard extends StatelessWidget {
+class InfoHeader extends StatefulWidget {
   final String image;
-  final String title;
-  final String text;
-  const PreventCard({
-    Key key,
-    this.image,
-    this.title,
-    this.text,
-  }) : super(key: key);
+  final String textTop;
+  final String textBottom;
+  final double offset;
+  const InfoHeader(
+      {Key key, this.image, this.textTop, this.textBottom, this.offset})
+      : super(key: key);
 
   @override
+  _InfoHeaderState createState() => _InfoHeaderState();
+}
+
+class _InfoHeaderState extends State<InfoHeader> {
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: SizedBox(
-        height: 156,
-        child: Stack(
-          alignment: Alignment.centerLeft,
+    return ClipPath(
+      clipper: MyClipper(),
+      child: Container(
+        padding: EdgeInsets.only(left: 10, top: 50, right: 20),
+        height: 350,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color(0xFF3383CD),
+              Color(0xFF11249F),
+            ],
+          ),
+          image: DecorationImage(
+            fit: BoxFit.contain,
+            //alignment: Alignment.center,
+            image: AssetImage("assets/images/india.png"),
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            Container(
-              height: 136,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 8),
-                    blurRadius: 24,
-                    color: kShadowColor,
+            Expanded(
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    top: 20 - widget.offset / 2,
+                    left: 220,
+                    child: Text(
+                      "${widget.textTop} \n${widget.textBottom}",
+                      style: kHeadingTextStyle.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
+                  Container(),
                 ],
-              ),
-            ),
-            Image.asset(image),
-            Positioned(
-              left: 130,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                height: 136,
-                width: MediaQuery.of(context).size.width - 170,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      title,
-                      style: kTitleTextstyle.copyWith(
-                        fontSize: 16,
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        text,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: SvgPicture.asset("assets/icons/forward.svg"),
-                    ),
-                  ],
-                ),
               ),
             ),
           ],
@@ -179,47 +222,20 @@ class PreventCard extends StatelessWidget {
   }
 }
 
-class SymptomCard extends StatelessWidget {
-  final String image;
-  final String title;
-  final bool isActive;
-  const SymptomCard({
-    Key key,
-    this.image,
-    this.title,
-    this.isActive = false,
-  }) : super(key: key);
+class MyClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0, size.height - 60);
+    path.quadraticBezierTo(
+        size.width / 2, size.height, size.width, size.height - 60);
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
-        boxShadow: [
-          isActive
-              ? BoxShadow(
-            offset: Offset(0, 10),
-            blurRadius: 20,
-            color: kActiveShadowColor,
-          )
-              : BoxShadow(
-            offset: Offset(0, 3),
-            blurRadius: 6,
-            color: kShadowColor,
-          ),
-        ],
-      ),
-      child: Column(
-        children: <Widget>[
-          Image.asset(image, height: 90),
-          Text(
-            title,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
-    );
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
   }
 }

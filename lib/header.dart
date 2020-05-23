@@ -45,32 +45,9 @@ class _MyHeaderState extends State<MyHeader> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-//            GestureDetector(
-//              onTap: () {
-//                Navigator.push(
-//                  context,
-//                  MaterialPageRoute(
-//                    builder: (context) {
-//                      return InfoScreen();
-//                    },
-//                  ),
-//                );
-//              },
-//              child: SvgPicture.asset("assets/icons/menu.svg"),
-//            ),
-//            SizedBox(height: 20),
             Expanded(
               child: Stack(
                 children: <Widget>[
-//                  Positioned(
-//                    top: (widget.offset < 0) ? 0 : widget.offset,
-//                    child: SvgPicture.asset(
-//                      widget.image,
-//                      width: 230,
-//                      fit: BoxFit.fitWidth,
-//                      alignment: Alignment.topCenter,
-//                    ),
-//                  ),
                   Positioned(
                     top: 10- widget.offset / 2,
                     left: 220,
@@ -81,7 +58,7 @@ class _MyHeaderState extends State<MyHeader> {
                       ),
                     ),
                   ),
-                  Container(), // I dont know why it can't work without container
+                  Container(),
                 ],
               ),
             ),

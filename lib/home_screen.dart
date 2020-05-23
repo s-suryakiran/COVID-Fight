@@ -28,7 +28,7 @@ class HomeScreen extends StatefulWidget {
       color: Colors.pinkAccent,
     ),
     BarItem(
-      text: "Health Tips",
+      text: "My Region",
       iconData: Icons.beenhere,
       color: Colors.green,
     ),

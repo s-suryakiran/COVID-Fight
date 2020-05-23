@@ -11,6 +11,7 @@ class StatusUpdation extends StatefulWidget {
 }
 
 class _StatusUpdationState extends State<StatusUpdation> {
+
   final controller = ScrollController();
   double offset = 0;
   String deaths;
@@ -99,13 +100,6 @@ class _StatusUpdationState extends State<StatusUpdation> {
                         ),
                       ),
                       Spacer(),
-//                      Text(
-//                        "See details",
-//                        style: TextStyle(
-//                          color: kPrimaryColor,
-//                          fontWeight: FontWeight.w600,
-//                        ),
-//                      ),
                     ],
                   ),
                   SizedBox(height: 20),
