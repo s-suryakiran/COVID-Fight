@@ -58,6 +58,7 @@ class _InfoScreenState extends State<InfoScreen> {
 
   List<Widget> getStateInfo() {
     List<Widget> st = new List();
+    if(state!=null)
     for (var i in state) {
       if (i["state"] != "Total") {
         countryInfected = i["confirmed"].toString();
