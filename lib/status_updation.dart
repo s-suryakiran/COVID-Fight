@@ -11,7 +11,7 @@ class StatusUpdation extends StatefulWidget {
 }
 
 class _StatusUpdationState extends State<StatusUpdation> {
-
+var data;
   final controller = ScrollController();
   double offset = 0;
   String deaths;
@@ -25,18 +25,18 @@ class _StatusUpdationState extends State<StatusUpdation> {
   List<String> countryNames = new List();
 
   void getData() async {
-    NetworkHelper nw = NetworkHelper('https://covid19api.io/api/v1/AllReports');
+    NetworkHelper nw = NetworkHelper('https://coronavirus-19-api.herokuapp.com/countries');
 
-    var data = await nw.getData();
-
+    data = await nw.getData();
+print(data);
     setState(() {
-      cases = data['reports'][0]['cases'].toString();
-      deaths = data['reports'][0]['deaths'].toString();
-      recovered = data['reports'][0]['recovered'].toString();
-      table = data['reports'][0]['table'][0];
-      for (var i in table) {
-        if (i['Country'] != 'World' || i['Country'] != 'Total:')
-          countryNames.add(i['Country']);
+      cases = data[0]['cases'].toString();
+      deaths = data[0]['deaths'].toString();
+      recovered = data[0]["recovered"].toString();
+//      table = data['reports'][0]['table'][0];
+      for (var i in data) {
+        if (i["country"] != 'World')
+          countryNames.add(i['country']);
       }
 
       countryNames.sort();
@@ -183,19 +183,19 @@ class _StatusUpdationState extends State<StatusUpdation> {
                               );
                             }).toList(),
                             onChanged: (value) {
-                              for (var i in table) {
-                                if (value == i['Country']) {
+                              for (var i in data) {
+                                if (value == i['country']) {
                                   setState(() {
                                     Value = value;
-                                    if (i['TotalCases'].toString() != "")
+                                    if (i['cases'].toString() != "")
                                       countryInfected =
-                                          i['TotalCases'].toString();
-                                    if (i['TotalDeaths'].toString() != "")
+                                          i['cases'].toString();
+                                    if (i['deaths'].toString() != "")
                                       countryDeaths =
-                                          i['TotalDeaths'].toString();
-                                    if (i['TotalRecovered'].toString() != "")
+                                          i['deaths'].toString();
+                                    if (i['recovered'].toString() != "")
                                       countryRecovered =
-                                          i['TotalRecovered'].toString();
+                                          i['recovered'].toString();
                                   });
                                 }
                               }

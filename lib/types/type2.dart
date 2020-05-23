@@ -30,7 +30,7 @@ class _Type2State extends State<Type2> {
   List<Widget> createRadioList() {
     List<Widget> widgets = [];
     widgets.add(Expanded(
-      flex: 6,
+      flex: 4,
       child: Center(
         child: Text(
           widget.question,
