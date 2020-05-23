@@ -130,6 +130,7 @@ class _Type2State extends State<Type2> {
           onChanged: (value) {
             setState(() {
               _option = value;
+              print(_option);
             });
           },
         ),
@@ -210,8 +211,9 @@ class _Type3State extends State<Type3> {
       widgets.add(CheckboxGroup(
         labels: str,
         onChange:(bool isChecked,String label,int index) {
-
+print(index);
         },
+        onSelected: (List<String> checked,)=>print(checked),
       ));
 
     widgets.add(SizedBox(height:20));

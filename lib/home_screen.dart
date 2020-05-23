@@ -12,6 +12,8 @@ import 'placeholder_widget.dart';
 import 'status_updation.dart';
 import 'home.dart';
 import 'info_screen.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'chatbot.dart';
 
 class HomeScreen extends StatefulWidget {
   final List<BarItem> barItems = [
@@ -42,12 +44,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final FirebaseMessaging _messaging=FirebaseMessaging();
   int selectedBarIndex = 0;
   final List<Widget> _children = [
     PlaceholderWidget(widget: Home()),
     PlaceholderWidget(widget: StatusUpdation()),
     PlaceholderWidget(widget: InfoScreen(),)
   ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _messaging.getToken().then((value) => print(value));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
         heroTag: "button1",
         onPressed: () {
           return Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Chatbot()));
+              context, MaterialPageRoute(builder: (context) => ChatBot()));
         },
         child: Icon(Icons.message),
       ),
