@@ -11,6 +11,9 @@ import 'chatbot_chat.dart';
 import 'placeholder_widget.dart';
 import 'status_updation.dart';
 import 'self_diagnosis_home.dart';
+import 'self_diagnosis_brain.dart';
+import 'types/type3.dart';//type 3
+
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,6 @@ class Home extends StatelessWidget {
           },
           child: Icon(Icons.message),
         ),
-
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -99,7 +101,7 @@ class Home extends StatelessWidget {
                                     ),
                                     Wrap(
                                       crossAxisAlignment:
-                                      WrapCrossAlignment.center,
+                                          WrapCrossAlignment.center,
                                       spacing: 5,
                                       runSpacing: 2,
                                       children: <Widget>[
@@ -126,11 +128,25 @@ class Home extends StatelessWidget {
                           Expanded(
                             child: RaisedButton(
                               color: Colors.blue,
+
                               //TODO: 1.Self Diagnosis page
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                  return (SelfDiagnosisHome());
-                                }));
+//                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+//                                  return (SelfDiagnosisHome());
+//                                }));
+                                StoryBrain brain = StoryBrain();
+                                int type = brain.getQuestionType(3);
+                                print(brain.getOptions(3));
+                                if (type == 3) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Type3(
+                                                questionNumber: 3,
+                                                question: brain.getQuestion(3),
+                                                str: brain.getOptions(3),
+                                              )));
+                                }
                               },
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)),
@@ -154,7 +170,7 @@ class Home extends StatelessWidget {
                                       spacing: 5,
                                       runSpacing: 2,
                                       crossAxisAlignment:
-                                      WrapCrossAlignment.center,
+                                          WrapCrossAlignment.center,
                                       children: <Widget>[
                                         Text(
                                           "Self",

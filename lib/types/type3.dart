@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
-import 'self_diagnosis_brain.dart';
-import 'self_diagnosis.dart';
+import '../self_diagnosis_brain.dart';
+import '../self_diagnosis.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
-bool checkValue = false;
-StoryBrain storyBrain = new StoryBrain();
-enum TypeOne { yes, no }
+import 'package:flutter/foundation.dart';
+import 'type2.dart';
+import 'type1.dart';
+import 'type4.dart';
 
+StoryBrain brain = StoryBrain();
+enum TypeOne { yes, no }
+/*
 class Type1 extends StatefulWidget {
   @override
   _Type1State createState() => _Type1State();
 }
 
 class _Type1State extends State<Type1> {
+  int currentQuestion = 3;
+  int nextQuestion;
   TypeOne _option = TypeOne.no;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,7 @@ class _Type1State extends State<Type1> {
               flex: 6,
               child: Center(
                 child: Text(
-                  storyBrain.getQuestion(),
+                  storyBrain.getQuestion(currentQuestion),
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
@@ -79,6 +85,15 @@ class _Type1State extends State<Type1> {
               child: RaisedButton(
                 onPressed: () {
                   //TODO:next question
+                  List<int> answer = [];
+                  if(_option == TypeOne.no)
+                    answer.add(1);
+                  else
+                    answer.add(0);
+                  setState(() {
+                    nextQuestion = storyBrain.nextStory(answer,currentQuestion);
+                    currentQuestion = nextQuestion;
+                  });
                 },
                 child: Text(
                   "NEXT",
@@ -99,7 +114,8 @@ class _Type1State extends State<Type1> {
     );
   }
 }
-
+*/
+/*
 class Type2 extends StatefulWidget {
   @override
   _Type2State createState() => _Type2State();
@@ -186,7 +202,138 @@ class _Type2State extends State<Type2> {
     );
   }
 }
+
+ */
+List<String> answers = [];
+String result;
+
+class Type3 extends StatelessWidget {
+  Type3(
+      {@required this.questionNumber,
+      @required this.question,
+      @required this.str});
+  final String question;
+  final List<String> str;
+  final int questionNumber;
+  List<Widget> createRadioList(BuildContext context, answers) {
+    List<Widget> widgets = [];
+    widgets.add(SizedBox(height: 40));
+    widgets.add(
+      Center(
+        child: Text(
+          question,
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+    widgets.add(SizedBox(height: 20));
+    widgets.add(CheckboxGroup(
+      labels: str,
+      onChange: (bool isChecked, String label, int index) {
+        if (isChecked) {
+          print(index);
+          answers.add(index.toString());
+        } else {
+          if (answers.contains(index.toString()))
+            answers.remove(index.toString());
+        }
+      },
+    ));
+    widgets.add(SizedBox(height: 20));
+    widgets.add(ButtonTheme(
+      minWidth: double.infinity,
+      height: 60,
+      child: RaisedButton(
+        onPressed: () {
+
+          //TODO:SHOULD I SORT
+          if (listEquals(answers, []))
+            result = '-1';
+          else
+            result = answers.join();
+          int q = brain.nextStory(result, questionNumber);
+          print(q);
+          int type = brain.getQuestionType(q);
+          print(type);
+          if (type == 1) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Type1(
+                          questionNumber: q,
+                          question: brain.getQuestion(q),
+                          str: brain.getOptions(q),
+                        )));
+          } else if (type == 2) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Type2(
+                          questionNumber: q,
+                          question: brain.getQuestion(q),
+                          str: brain.getOptions(q),
+                        )));
+          } else if (type == 3) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Type3(
+                          questionNumber: q,
+                          question: brain.getQuestion(q),
+                          str: brain.getOptions(q),
+                        )));
+          } else if (type == 4) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Type4(
+                          questionNumber: q,
+                          question: brain.getQuestion(q),
+                          str: brain.getOptions(q),
+                        )));
+          }
+        },
+        child: Text(
+          "NEXT",
+          style: TextStyle(
+              fontSize: 20,
+              letterSpacing: 3,
+              color: Colors.white,
+              fontWeight: FontWeight.bold),
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        color: Colors.purple[500],
+      ),
+    ));
+    return widgets;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.purple[100],
+      appBar: AppBar(
+        title: Text("Self-Diagnosis"),
+        backgroundColor: Colors.purple,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: createRadioList(context, answers),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/*
 class Type3 extends StatefulWidget {
+  Type3({@required this.question});
+  final String question;
+
   @override
   _Type3State createState() => _Type3State();
 }
@@ -201,7 +348,8 @@ class _Type3State extends State<Type3> {
     widgets.add(SizedBox(height:40));
     widgets.add(Center(
       child: Text(
-        storyBrain.getQuestion(),
+        question,
+        //storyBrain.getQuestion(),
         style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         textAlign: TextAlign.center,
       ),
@@ -222,8 +370,8 @@ class _Type3State extends State<Type3> {
 
         onPressed: () {
           setState(() {
-            storyBrain.nextStory();
-            storyBrain.getQuestion();
+//            storyBrain.nextStory();
+//            storyBrain.getQuestion();
           });
         },
         child: Text(
@@ -245,9 +393,11 @@ class _Type3State extends State<Type3> {
   @override
   void initState() {
     // TODO: implement initState
-    str = storyBrain.getOptions();
+//    str = storyBrain.getOptions();
     _option = str.first;
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -262,13 +412,14 @@ class _Type3State extends State<Type3> {
           padding: const EdgeInsets.all(15.0),
           child: Column(
 
-            children: createRadioList(),
+            children: createRadioList(question),
           ),
         ),
       ),
     );
   }
-}
+} */
+/*
 class Type4 extends StatefulWidget {
   @override
   _Type4State createState() => _Type4State();
@@ -309,3 +460,4 @@ class _Type4State extends State<Type4> {
     );
   }
 }
+*/

@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 //import 'status_updation.dart';
 import 'home_screen.dart';
 import 'register.dart';
-import 'self_diagnosis_ui.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -24,11 +23,11 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-      home: Type2(),
-//      home:HomeScreen(),
+//      home: Diagnosis_Main_Page(),
+      home:HomeScreen(),
 //    home: StatusUpdation(),
 //        routes: {
-//        '/chatbot':(context) => Chatbot(),
+//        'type3':(context) => Type3(),
 //        },
     );
   }

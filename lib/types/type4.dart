@@ -1,0 +1,71 @@
+import 'package:flutter/material.dart';
+import '../self_diagnosis_brain.dart';
+import '../self_diagnosis.dart';
+import 'package:grouped_buttons/grouped_buttons.dart';
+import 'package:flutter/foundation.dart';
+import 'package:CovidFight/home_screen.dart';
+import 'type3.dart';
+import 'type2.dart';
+import 'type1.dart';
+
+List<String> answers = [];
+String result;
+StoryBrain brain = StoryBrain();
+
+class Type4 extends StatefulWidget {
+  Type4({
+    @required this.questionNumber,
+    @required this.question,
+    @required this.str,
+    Key key,
+  }) : super(key: key);
+  final String question;
+  final List<String> str;
+  final int questionNumber;
+  @override
+  _Type4State createState() => _Type4State();
+}
+
+class _Type4State extends State<Type4> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Result"),
+        backgroundColor: Colors.purple,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            widget.str[0],
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          RaisedButton(
+            onPressed: () {
+              //TODO:next question
+              print(widget.str[0]);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+            child: Text(
+              "FINISH",
+              style: TextStyle(
+                  fontSize: 20,
+                  letterSpacing: 3,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            color: Colors.purple[500],
+          )
+        ],
+      ),
+    );
+  }
+}
