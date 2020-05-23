@@ -1,4 +1,3 @@
-import 'package:CovidFight/chatbot_chat.dart';
 import 'package:CovidFight/self_diagnosis_brain.dart';
 import 'package:CovidFight/status_updation.dart';
 import 'home.dart';
@@ -10,7 +9,6 @@ import 'package:flutter/material.dart';
 //import 'status_updation.dart';
 import 'home_screen.dart';
 import 'register.dart';
-import 'self_diagnosis_ui.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'chatbot.dart';
 void main() => runApp(MyApp());
@@ -28,7 +26,6 @@ class MyApp extends StatelessWidget {
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
       home: HomeScreen(),
-//      home:HomeScreen(),
 //    home: StatusUpdation(),
 //        routes: {
 //        '/chatbot':(context) => Chatbot(),
@@ -36,4 +33,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
