@@ -1,5 +1,6 @@
 import 'package:CovidFight/self_diagnosis_brain.dart';
 import 'package:CovidFight/status_updation.dart';
+import 'package:CovidFight/types/type1.dart';
 import 'home.dart';
 import 'constants.dart';
 //import 'counter.dart';
@@ -11,6 +12,7 @@ import 'home_screen.dart';
 import 'register.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'chatbot.dart';
+import 'types/type1.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-      home: HomeScreen(),
+      home: Type1(),
 //    home: StatusUpdation(),
 //        routes: {
 //        '/chatbot':(context) => Chatbot(),

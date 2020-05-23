@@ -28,7 +28,7 @@ class _StatusUpdationState extends State<StatusUpdation> {
     NetworkHelper nw = NetworkHelper('https://covid19api.io/api/v1/AllReports');
 
     var data = await nw.getData();
-
+data=data["reports"][0];
     setState(() {
       cases = data['cases'].toString();
       deaths = data['deaths'].toString();
