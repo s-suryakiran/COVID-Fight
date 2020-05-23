@@ -100,23 +100,15 @@ class Home extends StatelessWidget {
                                       width: 8,
                                     ),
                                     Expanded(
-                                      child: Wrap(
-                                        crossAxisAlignment:
-                                            WrapCrossAlignment.center,
-                                        children: <Widget>[
-                                          Text(
-                                            "Dial",
-                                            style: kTitleTextstyle.copyWith(
-                                                color: Colors.white),
-                                          ),
-                                          Text(
-                                            "Emergency",
-                                            style: kTitleTextstyle.copyWith(
-                                                color: Colors.white),
-                                          ),
-                                        ],
+                                      child: Text(
+
+                                        "Dial\nEmergency",
+                                        textAlign: TextAlign.center,
+                                        style: kTitleTextstyle.copyWith(
+                                            color: Colors.white),
                                       ),
                                     ),
+
                                   ],
                                 ),
                               ),
@@ -167,23 +159,14 @@ class Home extends StatelessWidget {
                                       width: 8,
                                     ),
                                     Expanded(
-                                      child: Wrap(
-                                        crossAxisAlignment:
-                                            WrapCrossAlignment.center,
-                                        children: <Widget>[
-                                          Text(
-                                            "Self",
-                                            style: kTitleTextstyle.copyWith(
-                                                color: Colors.white),
-                                          ),
-                                          Text(
-                                            "Diagnosis",
-                                            style: kTitleTextstyle.copyWith(
-                                                color: Colors.white),
-                                          ),
-                                        ],
+                                      child: Text(
+                                        "Self\nDiagnosis",
+                                        textAlign: TextAlign.center,
+                                        style: kTitleTextstyle.copyWith(
+                                            color: Colors.white),
                                       ),
                                     ),
+
                                   ],
                                 ),
                               ),
