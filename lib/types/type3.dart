@@ -242,71 +242,7 @@ class Type3 extends StatelessWidget {
       },
     ));
     widgets.add(SizedBox(height: 20));
-    widgets.add(ButtonTheme(
-      minWidth: double.infinity,
-      height: 60,
-      child: RaisedButton(
-        onPressed: () {
 
-          //TODO:SHOULD I SORT
-          if (listEquals(answers, []))
-            result = '-1';
-          else
-            result = answers.join();
-          int q = brain.nextStory(result, questionNumber);
-          print(q);
-          int type = brain.getQuestionType(q);
-          print(type);
-          if (type == 1) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Type1(
-                          questionNumber: q,
-                          question: brain.getQuestion(q),
-                          str: brain.getOptions(q),
-                        )));
-          } else if (type == 2) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Type2(
-                          questionNumber: q,
-                          question: brain.getQuestion(q),
-                          str: brain.getOptions(q),
-                        )));
-          } else if (type == 3) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Type3(
-                          questionNumber: q,
-                          question: brain.getQuestion(q),
-                          str: brain.getOptions(q),
-                        )));
-          } else if (type == 4) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Type4(
-                          questionNumber: q,
-                          question: brain.getQuestion(q),
-                          str: brain.getOptions(q),
-                        )));
-          }
-        },
-        child: Text(
-          "NEXT",
-          style: TextStyle(
-              fontSize: 20,
-              letterSpacing: 3,
-              color: Colors.white,
-              fontWeight: FontWeight.bold),
-        ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        color: Colors.teal[500],
-      ),
-    ));
     return widgets;
   }
 
@@ -324,7 +260,78 @@ class Type3 extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
-            children: createRadioList(context, answers),
+            children: <Widget>[
+              Column(
+                children: createRadioList(context, answers),
+              ),
+          ButtonTheme(
+            minWidth: double.infinity,
+            height: 60,
+
+            child: RaisedButton(
+
+              onPressed: () {
+
+                //TODO:SHOULD I SORT
+                if (listEquals(answers, []))
+                  result = '-1';
+                else
+                  result = answers.join();
+                int q = brain.nextStory(result, questionNumber);
+                print(q);
+                int type = brain.getQuestionType(q);
+                print(type);
+                if (type == 1) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Type1(
+                            questionNumber: q,
+                            question: brain.getQuestion(q),
+                            str: brain.getOptions(q),
+                          )));
+                } else if (type == 2) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Type2(
+                            questionNumber: q,
+                            question: brain.getQuestion(q),
+                            str: brain.getOptions(q),
+                          )));
+                } else if (type == 3) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Type3(
+                            questionNumber: q,
+                            question: brain.getQuestion(q),
+                            str: brain.getOptions(q),
+                          )));
+                } else if (type == 4) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Type4(
+                            questionNumber: q,
+                            question: brain.getQuestion(q),
+                            str: brain.getOptions(q),
+                          )));
+                }
+              },
+              child: Text(
+                "NEXT",
+                style: TextStyle(
+                    fontSize: 20,
+                    letterSpacing: 3,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              color: Colors.teal[500],
+            ),
+          )
+            ],
           ),
         ),
       ),
