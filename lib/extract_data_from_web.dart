@@ -12,8 +12,8 @@ class NetworkHelper {
     String errorCode = response.statusCode.toString();
     if (response.statusCode == 200) {
       var decodedData = jsonDecode(response.body.toString());
-      var recentDeathCount = decodedData['reports'][0];
-      return recentDeathCount;
+      //var recentDeathCount = decodedData['reports'][0];
+      return decodedData;
     } else {
       print(response.statusCode.toString());
     }

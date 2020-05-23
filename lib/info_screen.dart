@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'counter.dart';
 import 'extract_data_from_web.dart';
+import 'package:after_layout/after_layout.dart';
 class InfoScreen extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
@@ -11,9 +12,10 @@ class InfoScreen extends StatefulWidget {
 
 class _InfoScreenState extends State<InfoScreen> {
   var state;
-  String countryInfected ;
-  String countryDeaths ;
-  String countryRecovered ;
+  bool _isVisible = false;
+  String countryInfected = "-";
+  String countryDeaths = "-";
+  String countryRecovered = "-";
   String Value;
   final controller = ScrollController();
   double offset = 0;
@@ -22,9 +24,10 @@ class _InfoScreenState extends State<InfoScreen> {
   void initState() {
     // TODO: implement initState
 
-    super.initState();
-    controller.addListener(onScroll);
     getData();
+    controller.addListener(onScroll);
+
+
   }
 
   @override
@@ -39,66 +42,83 @@ class _InfoScreenState extends State<InfoScreen> {
       offset = (controller.hasClients) ? controller.offset : 0;
     });
   }
+
   void getData() async {
-    NetworkHelper nw = NetworkHelper('https://api.rootnet.in/covid19-in/stats/latest');
+    NetworkHelper nw = NetworkHelper('https://api.covid19india.org/data.json');
 
     var data = await nw.getData();
-    print(data);
+    //print(data);
 
     setState(() {
-      //state = data["statewise"];
-     // print(state);
+      state = data["statewise"];
+      _isVisible = !_isVisible;
+//      print(state);
     });
   }
-  List<Widget> getStateInfo(){
-    List<Widget> st=new List();
-    for(var i in state){
-      countryInfected=i["confirmed"];
-      countryDeaths=i["deaths"];
-countryRecovered=i["recovered"];
 
-    st.add(Container(
-      padding: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0, 4),
-            blurRadius: 30,
-            color: kShadowColor,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Expanded(
-            child: Counter(
-              color: kInfectedColor,
-              number: countryInfected,
-              title: "Infected",
+  List<Widget> getStateInfo() {
+    List<Widget> st = new List();
+    for (var i in state) {
+      if (i["state"] != "Total") {
+        countryInfected = i["confirmed"].toString();
+        countryDeaths = i["deaths"].toString();
+        countryRecovered = i["recovered"].toString();
+        st.add(SizedBox(height: 20));
+        st.add(Container(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              i["state"].toString(),
+              style: TextStyle(fontSize: 18),
+            )));
+        st.add(SizedBox(height: 10));
+
+        st.add(
+          Container(
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 4),
+                  blurRadius: 30,
+                  color: kShadowColor,
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Expanded(
+                  child: Counter(
+                    color: kInfectedColor,
+                    number: countryInfected,
+                    title: "Infected",
+                  ),
+                ),
+                Expanded(
+                  child: Counter(
+                    color: kDeathColor,
+                    number: countryDeaths,
+                    title: "Deaths",
+                  ),
+                ),
+                Expanded(
+                  child: Counter(
+                    color: kRecovercolor,
+                    number: countryRecovered,
+                    title: "Recovered",
+                  ),
+                ),
+              ],
             ),
           ),
-          Expanded(
-            child: Counter(
-              color: kDeathColor,
-              number: countryDeaths,
-              title: "Deaths",
-            ),
-          ),
-          Expanded(
-            child: Counter(
-              color: kRecovercolor,
-              number: countryRecovered,
-              title: "Recovered",
-            ),
-          ),
-        ],
-      ),
-    ),);}
+        );
+      }
+    }
     return st;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,12 +141,13 @@ countryRecovered=i["recovered"];
                     "State-wise",
                     style: kTitleTextstyle.copyWith(fontSize: 30),
                   ),
-                  SizedBox(height: 20),
-
-//                  Column(
-//                    children: getStateInfo() ,
-//                  ),
-                  SizedBox(height: 50),
+                  Visibility(
+                    visible: _isVisible,
+                    child: Column(
+                      children: getStateInfo(),
+                    ),
+                  ),
+                  SizedBox(height: 80),
                 ],
               ),
             )
@@ -136,7 +157,6 @@ countryRecovered=i["recovered"];
     );
   }
 }
-
 
 class InfoHeader extends StatefulWidget {
   final String image;
@@ -182,7 +202,7 @@ class _InfoHeaderState extends State<InfoHeader> {
               child: Stack(
                 children: <Widget>[
                   Positioned(
-                    top: 20- widget.offset / 2,
+                    top: 20 - widget.offset / 2,
                     left: 220,
                     child: Text(
                       "${widget.textTop} \n${widget.textBottom}",
