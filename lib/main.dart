@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 //import 'status_updation.dart';
 import 'home_screen.dart';
 import 'register.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'chatbot.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -23,11 +25,10 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-//      home: Diagnosis_Main_Page(),
-      home:HomeScreen(),
+      home: HomeScreen(),
 //    home: StatusUpdation(),
 //        routes: {
-//        'type3':(context) => Type3(),
+//        '/chatbot':(context) => Chatbot(),
 //        },
     );
   }
