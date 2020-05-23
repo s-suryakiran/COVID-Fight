@@ -304,7 +304,7 @@ class Type3 extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        color: Colors.purple[500],
+        color: Colors.teal[500],
       ),
     ));
     return widgets;
@@ -313,10 +313,12 @@ class Type3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple[100],
+//      backgroundColor: Colors.purple[100],
+    backgroundColor: Colors.teal[100],
       appBar: AppBar(
         title: Text("Self-Diagnosis"),
-        backgroundColor: Colors.purple,
+//        backgroundColor: Colors.purple,
+      backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
         child: Padding(

@@ -30,10 +30,10 @@ class _StatusUpdationState extends State<StatusUpdation> {
     var data = await nw.getData();
 data=data["reports"][0];
     setState(() {
-      cases = data['cases'].toString();
-      deaths = data['deaths'].toString();
-      recovered = data['recovered'].toString();
-      table = data['table'][0];
+      cases = data['reports'][0]['cases'].toString();
+      deaths = data['reports'][0]['deaths'].toString();
+      recovered = data['reports'][0]['recovered'].toString();
+      table = data['reports'][0]['table'][0];
       for (var i in table) {
         if (i['Country'] != 'World' || i['Country'] != 'Total:')
           countryNames.add(i['Country']);
