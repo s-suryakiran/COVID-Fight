@@ -99,32 +99,32 @@ class Home extends StatelessWidget {
                                     SizedBox(
                                       width: 8,
                                     ),
-                                    Wrap(
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.center,
-                                      spacing: 5,
-                                      runSpacing: 2,
-                                      children: <Widget>[
-                                        Text(
-                                          "Call",
-                                          style: kTitleTextstyle.copyWith(
-                                              color: Colors.white),
-                                        ),
-                                        Text(
-                                          "Now",
-                                          style: kTitleTextstyle.copyWith(
-                                              color: Colors.white),
-                                        ),
-                                      ],
+                                    Expanded(
+                                      child: Wrap(
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.center,
+                                        children: <Widget>[
+                                          Text(
+                                            "Dial",
+                                            style: kTitleTextstyle.copyWith(
+                                                color: Colors.white),
+                                          ),
+                                          Text(
+                                            "Emergency",
+                                            style: kTitleTextstyle.copyWith(
+                                                color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
+                            SizedBox(
+                              width: 10,
+                            ),
                           Expanded(
                             child: RaisedButton(
                               color: Colors.blue,
@@ -166,23 +166,23 @@ class Home extends StatelessWidget {
                                     SizedBox(
                                       width: 8,
                                     ),
-                                    Wrap(
-                                      spacing: 5,
-                                      runSpacing: 2,
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.center,
-                                      children: <Widget>[
-                                        Text(
-                                          "Self",
-                                          style: kTitleTextstyle.copyWith(
-                                              color: Colors.white),
-                                        ),
-                                        Text(
-                                          "Diagnosis",
-                                          style: kTitleTextstyle.copyWith(
-                                              color: Colors.white),
-                                        ),
-                                      ],
+                                    Expanded(
+                                      child: Wrap(
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.center,
+                                        children: <Widget>[
+                                          Text(
+                                            "Self",
+                                            style: kTitleTextstyle.copyWith(
+                                                color: Colors.white),
+                                          ),
+                                          Text(
+                                            "Diagnosis",
+                                            style: kTitleTextstyle.copyWith(
+                                                color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
