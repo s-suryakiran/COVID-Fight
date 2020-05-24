@@ -18,13 +18,9 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            return Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Chatbot()));
-          },
-          child: Icon(Icons.message),
-        ),
+
+
+
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
