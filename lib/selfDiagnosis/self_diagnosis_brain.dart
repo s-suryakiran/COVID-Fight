@@ -3,7 +3,7 @@ class StoryBrain {
   StoryBrain({this.age});
   bool stopFlag = false, lead = false;
   final int age;
-  int fever;
+  int fever=0;
 
   //type 1=> yes or no
   //type 2=> single choice selection

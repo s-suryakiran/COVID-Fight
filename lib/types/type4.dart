@@ -44,9 +44,9 @@ class _Type4State extends State<Type4> {
           RaisedButton(
             onPressed: () {
               setState(() {
-                StoryBrain storybrain = new StoryBrain();
-                storybrain.lead = false;
-                storybrain.stopFlag = false;
+//                StoryBrain storybrain = new StoryBrain();
+                widget.brain.lead = false;
+//                storybrain.stopFlag = false;
               });
 
               print(widget.str[0]);
