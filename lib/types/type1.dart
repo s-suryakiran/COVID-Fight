@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '../self_diagnosis_brain.dart';
-import '../self_diagnosis.dart';
-import 'package:grouped_buttons/grouped_buttons.dart';
+import '../selfDiagnosis/self_diagnosis_brain.dart';
 import 'package:flutter/foundation.dart';
 import 'type3.dart';
 import 'type2.dart';

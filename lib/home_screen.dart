@@ -1,13 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'constants.dart';
-import 'counter.dart';
-import 'header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'animated_bar.dart';
-import 'chatbot_chat.dart';
 import 'placeholder_widget.dart';
 import 'status_updation.dart';
 import 'home.dart';
@@ -32,11 +25,6 @@ class HomeScreen extends StatefulWidget {
       iconData: Icons.beenhere,
       color: Colors.green,
     ),
-//    BarItem(
-//      text: "Profile",
-//      iconData: Icons.person_outline,
-//      color: Colors.teal,
-//    ),
   ];
 
   @override
@@ -44,13 +32,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  final FirebaseMessaging _messaging=FirebaseMessaging();
+  final FirebaseMessaging _messaging = FirebaseMessaging();
   int selectedBarIndex = 0;
   final List<Widget> _children = [
     PlaceholderWidget(widget: Home()),
     PlaceholderWidget(widget: StatusUpdation()),
-    PlaceholderWidget(widget: InfoScreen(),)
+    PlaceholderWidget(
+      widget: InfoScreen(),
+    )
   ];
   @override
   void initState() {
@@ -58,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _messaging.getToken().then((value) => print(value));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

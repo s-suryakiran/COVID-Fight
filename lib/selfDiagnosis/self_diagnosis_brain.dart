@@ -1,15 +1,9 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'self_diagnosis.dart';
-
 class StoryBrain {
-  List<int> answer;
-  int currentQuestion;
-  int nextQuestion;
-  bool redFlag, stopFlag = false, lead = false;
-  int age, fever;
-
-//  TODO:UPDATE FEVER VALUE IN QUESTIONS 11,26,31
+  StoryBrain({this.age});
+  bool stopFlag = false, lead = false;
+  final int age;
+  int fever;
 
   //type 1=> yes or no
   //type 2=> single choice selection
@@ -17,14 +11,17 @@ class StoryBrain {
   //type 4=>result
 
   List<SelfDiagnosis> _questions = [
+    SelfDiagnosis(type: 1, questionTitle: 'Please check atleast one answer'),
+
 //    1
     SelfDiagnosis(
-        type: 3,
-        questionTitle: 'Please check all statements that apply to you. ',
-        choice1: 'Current cancer',
-        choice2: 'Diseases or drugs that weaken immune system',
-        choice3: 'Obesity',
-        choice4: 'Long-term stay at care facility or nursing home'),
+      type: 3,
+      questionTitle: 'Please check all statements that apply to you. ',
+      choice1: 'Current cancer',
+      choice2: 'Diseases or drugs that weaken\nimmune system',
+      choice4: 'Long-term stay at care facility or\nnursing home',
+      choice3: 'Obesity',
+    ),
 //    2
     SelfDiagnosis(
         type: 3,
@@ -38,7 +35,7 @@ class StoryBrain {
     SelfDiagnosis(
         type: 3,
         questionTitle:
-        'Do you have any of the following symptoms? Please select symptoms that are not related to any chronic disease you may be subject to:',
+            'Do you have any of the following symptoms? Please select symptoms that are not related to any chronic disease you may be subject to:',
         choice1: 'Fever',
         choice2: 'Cough',
         choice3: 'Shortness of breath'),
@@ -58,24 +55,24 @@ class StoryBrain {
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such a person without the use of protective mask or gloves',
+            'I have provided direct care to such a person without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
 //6
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //7
@@ -152,7 +149,7 @@ class StoryBrain {
     SelfDiagnosis(
       type: 1,
       questionTitle:
-      'Have you traveled or resided in the country of local, widespread transmission of corona virus?',
+          'Have you traveled or resided in the country of local, widespread transmission of corona virus?',
       choice1: 'Yes',
       choice2: 'No',
     ),
@@ -160,12 +157,12 @@ class StoryBrain {
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //18
@@ -176,7 +173,7 @@ class StoryBrain {
         choice1: 'Avoid all contacts.Consult health department.'),
     //19
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible.'),
     //20
     //TODO
     SelfDiagnosis(
@@ -187,7 +184,7 @@ class StoryBrain {
     SelfDiagnosis(
       type: 1,
       questionTitle:
-      'Have you traveled or resided in the country of local, widespread transmission of corona virus?',
+          'Have you traveled or resided in the country of local, widespread transmission of corona virus?',
       choice1: 'Yes',
       choice2: 'No',
     ),
@@ -195,12 +192,12 @@ class StoryBrain {
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //23
@@ -217,7 +214,7 @@ class StoryBrain {
         choice1: 'Stay home and monitor your symptoms.'),
     //25
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible..'),
     //26
     SelfDiagnosis(
       type: 2,
@@ -300,12 +297,12 @@ class StoryBrain {
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //37
@@ -328,17 +325,17 @@ class StoryBrain {
         choice1: 'Stay home and monitor your symptoms.'),
     //40
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible..'),
     //41
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //42
@@ -361,7 +358,7 @@ class StoryBrain {
         choice1: 'Stay home and monitor your symptoms.'),
     //45
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible..'),
     //46
     SelfDiagnosis(
       type: 1,
@@ -399,12 +396,12 @@ class StoryBrain {
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //51
@@ -421,7 +418,7 @@ class StoryBrain {
         choice1: 'Call Emergency number.Avoid all contacts.'),
     //53
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible..'),
     //54
     //TODO
     SelfDiagnosis(
@@ -432,12 +429,12 @@ class StoryBrain {
     SelfDiagnosis(
         type: 2,
         questionTitle:
-        'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
+            'Have you had close contact with a person with confirmed or probable COVID-19 in the past 14 days?',
         choice1:
-        'I have provided direct care to such aperson without the use of protective mask or gloves',
+            'I have provided direct care to such aperson without the use of protective mask or gloves',
         choice2: 'I had a direct physical contact with such a person',
         choice3:
-        'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
+            'I had face to face contact with such a person within 1 meter for longer than 15 minutes',
         choice4: 'None of the above',
         choice5: 'Other type of contact'),
     //56
@@ -448,48 +445,56 @@ class StoryBrain {
         choice1: 'Avoid all contacts.Consult health department.'),
     //57
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible..'),
   ];
 
-  String getQuestion() {
-    return _questions[currentQuestion].questionTitle;
+  int getQuestionType(int currentQuestion) {
+    return _questions[currentQuestion].type;
   }
 
-  void nextStory() {
+  int nextStory(String answer, int currentQuestion) {
+    print(answer);
+    print(currentQuestion);
+    int nextQuestion = 0;
     switch (currentQuestion) {
-      case 0:
-        {
-          age = answer[0];
-          nextQuestion = 1;
-        }
-        break;
       case 1:
         {
-          if (answer.contains(2)) redFlag = true;
+print("hi$age");
           nextQuestion = 2;
+        }
+        break;
+      case 2:
+        {
+          nextQuestion = 3;
         }
         break;
       case 3:
         {
+          print("enteres case 3");
           switch (answer) {
-            case [-1]:
+            case '-1':
               nextQuestion = 4;
               break;
-            case [0, 1]:
+            case '01':
               nextQuestion = 11;
               break;
-            case [0]:
+            case '0':
               nextQuestion = 31;
               break;
-            case [1]:
+            case '1':
               nextQuestion = 32;
               break;
             default:
               {
-                if (!answer.contains(0) && answer == [2])
+                print("entered default");
+                if (!answer.contains('0') &&
+                    answer.contains('2')) //TODO: CHECK 2ND CODN
                   nextQuestion = 46;
-                else if (answer == [0, 2] || answer == [0, 1, 2])
+                else if (answer == '02' || answer == '012') {
                   nextQuestion = 26;
+                  print("entered correct if");
+                  print(nextQuestion);
+                }
               }
           }
         }
@@ -497,175 +502,140 @@ class StoryBrain {
 
       case 4:
         {
-          if (answer.contains(7)) redFlag = true;
-          if (answer == [-1] || answer == [0])
+          if (answer == '-1' || answer == '0')
             nextQuestion = 5;
           //TODO please check
-          else if (!answer.contains(0)) nextQuestion = 6;
+          else
+            nextQuestion = 6;
         }
         break;
 
       case 5:
         {
-          switch (answer) {
-            case [0]:
-            case [1]:
-            case [2]:
-              {
-                nextQuestion = 9;
-                redFlag = true;
-                stopFlag = true;
-              }
-              break;
-            case [3]:
-            case [4]:
-              {
-                nextQuestion = 10;
-                stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            nextQuestion = 9;
+            stopFlag = true;
+          }
+
+          if (answer == '3' || answer == '4') {
+            nextQuestion = 10;
+            stopFlag = true;
           }
         }
         break;
 
       case 6:
         {
-          switch (answer) {
-            case [0]:
-            case [1]:
-            case [2]:
-              {
-                nextQuestion = 7;
-                redFlag = true;
-                stopFlag = true;
-              }
-              break;
-            case [3]:
-            case [4]:
-              {
-                nextQuestion = 8;
-                stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            nextQuestion = 7;
+            stopFlag = true;
+          }
+
+          if (answer == '3' || answer == '4') {
+            nextQuestion = 8;
+            stopFlag = true;
           }
         }
         break;
 
       case 11:
         {
-
-          if (answer.contains(2)) {
+          lead = false;
+          if (answer=='2') {
             lead = true;
             fever = 45;
-          }else
+          } else
             fever = 30;
           nextQuestion = 12;
         }
         break;
       case 12:
         {
-          if (answer == [0]) //if yes
+          if (answer == '0') //if yes
             lead = true;
           nextQuestion = 13;
         }
         break;
       case 13:
         {
-          if (answer == [0]) //if yes
+          if (answer == '0') //if yes
             lead = true;
           nextQuestion = 14;
         }
         break;
       case 14:
         {
-          if (answer == [0]) //if yes
+          if (answer == '0') //if yes
             lead = true;
-          if (redFlag == true || fever > 40 || lead == true)
+          if (lead == true)
             nextQuestion = 30;
           else
             nextQuestion = 15;
-          lead = false;
         }
         break;
       case 15:
         {
-          if (answer.contains(7)) redFlag = true;
-          if (answer == [-1] || answer == [0])
+          if (answer == '-1' || answer == '0')
             nextQuestion = 21;
           //TODO please check
-          else if (!answer.contains(0)) nextQuestion = 16;
+          else
+            nextQuestion = 16;
         }
         break;
 
       case 16:
         {
-          nextQuestion = (answer == [1]) ? 20 : 17;
+          nextQuestion = (answer == '1') ? 17 : 20;
           if (nextQuestion == 20) stopFlag = true;
         }
         break;
 
       case 21:
         {
-          nextQuestion = (answer == [1]) ? 20 : 22;
+          nextQuestion = (answer == '1') ? 22 : 20;
           if (nextQuestion == 20) stopFlag = true;
         }
         break;
 
       case 17:
         {
-          switch (answer) {
-            case [0]:
-            case [1]:
-            case [2]:
-              {
-                nextQuestion = 18;
-                redFlag = true;
-                stopFlag = true;
-              }
-              break;
-            case [3]:
-            case [4]:
-              {
-                nextQuestion = 19;
-                stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            nextQuestion = 18;
+            stopFlag = true;
+          }
+
+          if (answer == '3' || answer == '4') {
+            nextQuestion = 19;
+            stopFlag = true;
           }
         }
         break;
 
       case 22:
         {
-          switch (answer) {
-            case [0]:
-            case [1]:
-            case [2]:
-              {
-                nextQuestion = 23;
-                redFlag = true;
-                stopFlag = true;
-              }
-              break;
-            case [3]:
-            case [4]:
-              {
-                nextQuestion = 24;
-                if (!(redFlag == true && age > 65)) stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            nextQuestion = 23;
+            stopFlag = true;
+          }
+          if (answer == '3' || answer == '4') {
+            if ((lead == true || age > 65)) {
+              nextQuestion = 25;
+              //TODO:check
+              stopFlag = true;
+              lead = false;
+            } else {
+              nextQuestion = 24;
+              stopFlag = true;
+              lead = false;
+            }
           }
         }
-        break;
-      case 24:
-        {
-          nextQuestion = 25;
-          stopFlag = true;
-        }
+
         break;
 
       case 26:
         {
-          if(answer.contains(2))
+          if (answer.contains('2'))
             fever = 45;
           else
             fever = 35;
@@ -687,7 +657,7 @@ class StoryBrain {
 //      TODO:HANDLE 31,32,33,34
       case 31:
         {
-          if(answer.contains(2))
+          if (answer.contains('2'))
             fever = 45;
           else
             fever = 35;
@@ -696,23 +666,24 @@ class StoryBrain {
         break;
       case 32:
         {
-          if (answer == [0]) //if yes
+          if (answer == '0') //if yes
             lead = true;
           nextQuestion = 33;
         }
         break;
       case 33:
         {
-          if (answer == [0]) //if yes
+          if (answer == '0') //if yes
             lead = true;
           nextQuestion = 34;
         }
         break;
       case 34:
-        {//TODO: CHECK FLOW .. HERE FEVER IS NOT CONSIDERED AT ALL
-          if (answer == [0]) //if yes
+        {
+          //TODO: CHECK FLOW .. HERE FEVER IS NOT CONSIDERED AT ALL
+          if (answer == '0') //if yes
             lead = true;
-          if(redFlag==true || lead==true)
+          if (lead == true)
             nextQuestion = 30;
           else
             nextQuestion = 35;
@@ -720,97 +691,75 @@ class StoryBrain {
         break;
       case 35:
         {
-          if (answer.contains(7)) redFlag = true;
-          if (answer == [-1] || answer == [0])
+          if (answer == '-1' || answer == '0')
             nextQuestion = 41;
           //TODO please check
-          else if (!answer.contains(0)) nextQuestion = 36;
+          else
+            nextQuestion = 36;
         }
         break;
 
       case 36:
         {
-          switch (answer) {
-            case [0]:
-            case [1]:
-            case [2]:
-              {
-                redFlag = true;
-                nextQuestion = 37;
-                if (fever <= 40) stopFlag = true;
-              }
-              break;
-            case [3]:
-            case [4]:
-              {
-                nextQuestion = 39;
-                if (fever <= 40 || age < 65 || redFlag == false)
-                  stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            if (fever <= 40) {
+              nextQuestion = 37;
+              stopFlag = true;
+            } else {
+              nextQuestion = 38;
+              stopFlag = true;
+            }
+          }
+          if (answer == '3' || answer == '4') {
+            if (fever <= 40 || age < 65 || lead == false) {
+              nextQuestion = 39;
+              lead = false;
+              stopFlag = true;
+            } else {
+              nextQuestion = 40;
+              lead = false;
+              stopFlag = true;
+            }
           }
         }
         break;
-      case 37:
-        {
-          nextQuestion = 38;
-          stopFlag = true;
-        }
-        break;
-      case 39:
-        {
-          nextQuestion = 40;
-          stopFlag = true;
-        }
-        break;
+
       case 41:
         {
-          switch (answer) {
-            case [0]:
-            case [1]:
-            case [2]:
-              {
-                redFlag = true;
-                nextQuestion = 42;
-                if (fever <= 40) stopFlag = true;
-              }
-              break;
-            case [3]:
-            case [4]:
-              {
-                nextQuestion = 44;
-                if (fever <= 40) stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            if (fever <= 40)
+              nextQuestion = 42;
+            else
+              nextQuestion = 43;
+            stopFlag = true;
           }
-        }
-        break;
-      case 42:
-        {
-          nextQuestion = 43;
-          stopFlag = true;
-        }
-        break;
-      case 44:
-        {
-          nextQuestion = 45;
-          stopFlag = true;
+
+          if (answer == '3' || answer == '4') {
+            if (fever <= 40)
+              nextQuestion = 44;
+            else
+              nextQuestion = 45;
+            stopFlag = true;
+          }
+          break;
         }
         break;
 
       case 46:
         {
+          if (answer == '0') lead = true;
           nextQuestion = 47;
         }
         break;
       case 47:
         {
+          if (answer == '0') lead = true;
           nextQuestion = 48;
         }
         break;
       case 48:
         {
-          if (redFlag) {
+          if (lead) {
             nextQuestion = 54;
             stopFlag = true;
           } else
@@ -820,64 +769,76 @@ class StoryBrain {
 
       case 49:
         {
-          if (answer == [-1] || answer == [0])
+          if (answer == '-1' || answer == '0')
             nextQuestion = 55;
           //TODO please check
-          else if (!answer.contains(0)) nextQuestion = 50;
+          else
+            nextQuestion = 50;
         }
         break;
 
       case 50:
         {
-          switch (answer) {
-            case [0]:
-            case [1]:
-            case [2]:
-              {
-                redFlag = true;
-                nextQuestion = 51;
-                if (age < 65 || redFlag == false) stopFlag = true;
-              }
-              break;
-            case [3]:
-            case [4]:
-              {
-                nextQuestion = 53;
-                stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            if (age <= 65 || lead == false)
+              nextQuestion = 51;
+            else
+              nextQuestion = 52;
+            stopFlag = true;
           }
+
+          if (answer == '3' || answer == '4') {
+            nextQuestion = 53;
+            stopFlag = true;
+          }
+          lead = false;
         }
         break;
-      case 51:
-        {
-          nextQuestion = 52;
-          stopFlag = true;
-        }
-        break;
+
       case 55:
         {
-          switch (answer) {
-            case [0]:
-            case [1]:
-            case [2]:
-              {
-                nextQuestion = 56;
-                redFlag = true;
-                stopFlag = true;
-              }
-              break;
-            case [3]:
-            case [4]:
-              {
-                nextQuestion = 57;
-                stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            nextQuestion = 56;
+            stopFlag = true;
+          }
+
+          if (answer == '3' || answer == '4') {
+            nextQuestion = 57;
+            stopFlag = true;
           }
         }
         break;
     } //switch ends
+    answer=null;
+    return nextQuestion;
   } //function ends
 
+  String getQuestion(int currentQuestion) {
+    return _questions[currentQuestion].questionTitle;
+  }
+
+  List<String> getOptions(int currentQuestion) {
+    List<String> options = new List();
+    if (_questions[currentQuestion].choice1 != null)
+      options.add(_questions[currentQuestion].choice1);
+    if (_questions[currentQuestion].choice2 != null)
+      options.add(_questions[currentQuestion].choice2);
+    if (_questions[currentQuestion].choice3 != null)
+      options.add(_questions[currentQuestion].choice3);
+    if (_questions[currentQuestion].choice4 != null)
+      options.add(_questions[currentQuestion].choice4);
+    if (_questions[currentQuestion].choice5 != null)
+      options.add(_questions[currentQuestion].choice5);
+    if (_questions[currentQuestion].choice6 != null)
+      options.add(_questions[currentQuestion].choice6);
+    if (_questions[currentQuestion].choice7 != null)
+      options.add(_questions[currentQuestion].choice7);
+    if (_questions[currentQuestion].choice8 != null)
+      options.add(_questions[currentQuestion].choice8);
+    return options;
+  }
+
+  String getResult() {
+    return _questions[7].choice1;
+  }
 }

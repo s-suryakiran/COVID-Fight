@@ -1,10 +1,8 @@
 import 'constants.dart';
-import 'header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'counter.dart';
 import 'extract_data_from_web.dart';
-import 'package:after_layout/after_layout.dart';
+
 class InfoScreen extends StatefulWidget {
   @override
   _InfoScreenState createState() => _InfoScreenState();
@@ -26,8 +24,6 @@ class _InfoScreenState extends State<InfoScreen> {
 
     getData();
     controller.addListener(onScroll);
-
-
   }
 
   @override
@@ -58,65 +54,65 @@ class _InfoScreenState extends State<InfoScreen> {
 
   List<Widget> getStateInfo() {
     List<Widget> st = new List();
-    if(state!=null)
-    for (var i in state) {
-      if (i["state"] != "Total") {
-        countryInfected = i["confirmed"].toString();
-        countryDeaths = i["deaths"].toString();
-        countryRecovered = i["recovered"].toString();
-        st.add(SizedBox(height: 20));
-        st.add(Container(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              i["state"].toString(),
-              style: TextStyle(fontSize: 18),
-            )));
-        st.add(SizedBox(height: 10));
+    if (state != null)
+      for (var i in state) {
+        if (i["state"] != "Total") {
+          countryInfected = i["confirmed"].toString();
+          countryDeaths = i["deaths"].toString();
+          countryRecovered = i["recovered"].toString();
+          st.add(SizedBox(height: 20));
+          st.add(Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                i["state"].toString(),
+                style: TextStyle(fontSize: 18),
+              )));
+          st.add(SizedBox(height: 10));
 
-        st.add(
-          Container(
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(0, 4),
-                  blurRadius: 30,
-                  color: kShadowColor,
-                ),
-              ],
+          st.add(
+            Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 4),
+                    blurRadius: 30,
+                    color: kShadowColor,
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Expanded(
+                    child: Counter(
+                      color: kInfectedColor,
+                      number: countryInfected,
+                      title: "Infected",
+                    ),
+                  ),
+                  Expanded(
+                    child: Counter(
+                      color: kDeathColor,
+                      number: countryDeaths,
+                      title: "Deaths",
+                    ),
+                  ),
+                  Expanded(
+                    child: Counter(
+                      color: kRecovercolor,
+                      number: countryRecovered,
+                      title: "Recovered",
+                    ),
+                  ),
+                ],
+              ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Expanded(
-                  child: Counter(
-                    color: kInfectedColor,
-                    number: countryInfected,
-                    title: "Infected",
-                  ),
-                ),
-                Expanded(
-                  child: Counter(
-                    color: kDeathColor,
-                    number: countryDeaths,
-                    title: "Deaths",
-                  ),
-                ),
-                Expanded(
-                  child: Counter(
-                    color: kRecovercolor,
-                    number: countryRecovered,
-                    title: "Recovered",
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
+          );
+        }
       }
-    }
     return st;
   }
 
@@ -192,7 +188,6 @@ class _InfoHeaderState extends State<InfoHeader> {
           ),
           image: DecorationImage(
             fit: BoxFit.contain,
-            //alignment: Alignment.center,
             image: AssetImage("assets/images/india.png"),
           ),
         ),
