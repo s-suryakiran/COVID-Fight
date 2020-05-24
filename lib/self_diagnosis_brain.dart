@@ -9,6 +9,9 @@ class StoryBrain {
   bool stopFlag = false, lead = false;
   int age;
   int fever;
+  void getAge(int age){
+    this.age=age;
+  }
   //type 1=> yes or no
   //type 2=> single choice selection
   //type 3=> multiple choice selection
@@ -463,7 +466,7 @@ class StoryBrain {
     switch (currentQuestion) {
       case 1:
         {
-          age = 65;
+print("hi$age");
           nextQuestion = 2;
         }
         break;

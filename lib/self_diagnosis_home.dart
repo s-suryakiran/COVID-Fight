@@ -12,7 +12,7 @@ const kBottomContainerColor1 = Color(0xFFEB1555);
 const kActiveCardColor1 = Color(0xFF111238);
 const kTextStyle1 = TextStyle(fontSize: 18, color: Colors.white);
 const kNumberTextStyle1 = TextStyle(fontSize: 50, fontWeight: FontWeight.w900);
-String age;
+int age;
 enum gender { male, female }
 gender selectedGender;
 
@@ -97,7 +97,7 @@ Expanded(child: SizedBox(),),
                 Expanded(
                   child: TextField(
                     onChanged: (value) {
-                      age = value;
+                      age = int.parse(value);
                     },
                     decoration: InputDecoration(
                       contentPadding:
@@ -125,6 +125,8 @@ Expanded(child: SizedBox(),),
                   child: RaisedButton(
                     onPressed: () {
                       setState(() {
+                        StoryBrain storybrain=new StoryBrain();
+                        storybrain.getAge(age);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
