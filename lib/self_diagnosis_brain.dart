@@ -28,8 +28,8 @@ class StoryBrain {
       type: 3,
       questionTitle: 'Please check all statements that apply to you. ',
       choice1: 'Current cancer',
-      choice2: 'Diseases or drugs that weaken immune \nsystem',
-      choice4: 'Long-term stay at care facility or nursing \nhome',
+      choice2: 'Diseases or drugs that weaken\nimmune system',
+      choice4: 'Long-term stay at care facility or\nnursing home',
       choice3: 'Obesity',
     ),
 //    2
