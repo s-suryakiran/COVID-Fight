@@ -186,7 +186,7 @@ class StoryBrain {
         choice1: 'Avoid all contacts.Consult health department.'),
     //19
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible.'),
     //20
     //TODO
     SelfDiagnosis(
@@ -227,7 +227,7 @@ class StoryBrain {
         choice1: 'Stay home and monitor your symptoms.'),
     //25
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible..'),
     //26
     SelfDiagnosis(
       type: 2,
@@ -338,7 +338,7 @@ class StoryBrain {
         choice1: 'Stay home and monitor your symptoms.'),
     //40
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible..'),
     //41
     SelfDiagnosis(
         type: 2,
@@ -371,7 +371,7 @@ class StoryBrain {
         choice1: 'Stay home and monitor your symptoms.'),
     //45
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible..'),
     //46
     SelfDiagnosis(
       type: 1,
@@ -431,7 +431,7 @@ class StoryBrain {
         choice1: 'Call Emergency number.Avoid all contacts.'),
     //53
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible..'),
     //54
     //TODO
     SelfDiagnosis(
@@ -458,7 +458,7 @@ class StoryBrain {
         choice1: 'Avoid all contacts.Consult health department.'),
     //57
     //TODO
-    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor.'),
+    SelfDiagnosis(type: 4, questionTitle: 'Result', choice1: 'Call Doctor as soon as possible..'),
   ];
 
   int getQuestionType(int currentQuestion) {
