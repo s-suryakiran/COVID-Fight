@@ -117,13 +117,14 @@ Expanded(child: SizedBox(),),
                     ),
                   ),
                 ),
-                Expanded(child:SizedBox()),
+                Expanded(child: SizedBox()),
                 ButtonTheme(
                   minWidth: double.infinity,
                   height: 60,
                   child: RaisedButton(
                     onPressed: () {
                       setState(() {
+
 
                         StoryBrain brain = new StoryBrain(age:age);
 
@@ -134,6 +135,7 @@ Expanded(child: SizedBox(),),
                                       questionNumber: 1,
                                       question: brain.getQuestion(1),
                                       str: brain.getOptions(1),
+                                      brain: brain,
                                     )));
                       });
                     },

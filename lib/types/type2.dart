@@ -9,13 +9,16 @@ import 'type4.dart';
 
 List<String> answers = [];
 String result;
-StoryBrain brain = StoryBrain();
 
 class Type2 extends StatefulWidget {
-  Type2(
-      {@required this.questionNumber,
-      @required this.question,
-      @required this.str});
+  Type2({
+    @required this.questionNumber,
+    @required this.question,
+    @required this.str,
+    @required this.brain,
+    Key key,
+  }) : super(key: key);
+  final StoryBrain brain;
   final String question;
   final List<String> str;
   final int questionNumber;
@@ -60,13 +63,12 @@ class _Type2State extends State<Type2> {
     widgets.add(Expanded(
       child: RaisedButton(
         onPressed: () {
-
           //TODO:IMPLEMENT NAV PUSH
           print(result);
           int q = widget.str.indexOf(result);
-          q = brain.nextStory(q.toString(), widget.questionNumber);
+          q = widget.brain.nextStory(q.toString(), widget.questionNumber);
           print(q);
-          int type = brain.getQuestionType(q);
+          int type = widget.brain.getQuestionType(q);
           print(type);
           if (type == 1) {
             Navigator.push(
@@ -74,8 +76,9 @@ class _Type2State extends State<Type2> {
                 MaterialPageRoute(
                     builder: (context) => Type1(
                           questionNumber: q,
-                          question: brain.getQuestion(q),
-                          str: brain.getOptions(q),
+                          question: widget.brain.getQuestion(q),
+                          str: widget.brain.getOptions(q),
+                          brain: widget.brain,
                         )));
           } else if (type == 2) {
             Navigator.push(
@@ -83,8 +86,9 @@ class _Type2State extends State<Type2> {
                 MaterialPageRoute(
                     builder: (context) => Type2(
                           questionNumber: q,
-                          question: brain.getQuestion(q),
-                          str: brain.getOptions(q),
+                          question: widget.brain.getQuestion(q),
+                          str: widget.brain.getOptions(q),
+                          brain: widget.brain,
                         )));
           } else if (type == 3) {
             Navigator.push(
@@ -92,8 +96,9 @@ class _Type2State extends State<Type2> {
                 MaterialPageRoute(
                     builder: (context) => Type3(
                           questionNumber: q,
-                          question: brain.getQuestion(q),
-                          str: brain.getOptions(q),
+                          question: widget.brain.getQuestion(q),
+                          str: widget.brain.getOptions(q),
+                          brain: widget.brain,
                         )));
           } else if (type == 4) {
             Navigator.push(
@@ -101,8 +106,9 @@ class _Type2State extends State<Type2> {
                 MaterialPageRoute(
                     builder: (context) => Type4(
                           questionNumber: q,
-                          question: brain.getQuestion(q),
-                          str: brain.getOptions(q),
+                          question: widget.brain.getQuestion(q),
+                          str: widget.brain.getOptions(q),
+                          brain: widget.brain,
                         )));
           }
         },
@@ -123,7 +129,6 @@ class _Type2State extends State<Type2> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.blue[100],
       appBar: AppBar(

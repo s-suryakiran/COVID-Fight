@@ -10,18 +10,19 @@ import 'type1.dart';
 
 List<String> answers = [];
 String result;
-StoryBrain brain = StoryBrain();
 
 class Type4 extends StatefulWidget {
   Type4({
     @required this.questionNumber,
     @required this.question,
     @required this.str,
+    @required this.brain,
     Key key,
   }) : super(key: key);
   final String question;
   final List<String> str;
   final int questionNumber;
+  final StoryBrain brain;
   @override
   _Type4State createState() => _Type4State();
 }

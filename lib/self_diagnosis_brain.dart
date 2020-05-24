@@ -9,12 +9,15 @@ import 'package:flutter/foundation.dart';
 class StoryBrain {
 //  List<int> answer;
 //  int currentQuestion=3;
-
+  StoryBrain({this.age});
   bool stopFlag = false, lead = false;
-  int age;
+  final int age;
   int fever;
 
-  StoryBrain({this.age});
+
+//  void getAge(int age){
+//    this.age=age;
+//  }
   //type 1=> yes or no
   //type 2=> single choice selection
   //type 3=> multiple choice selection
@@ -467,9 +470,6 @@ class StoryBrain {
     print(currentQuestion);
     int nextQuestion = 0;
     switch (currentQuestion) {
-      case 0:
-        nextQuestion=1;
-        break;
       case 1:
         {
 print("hi$age");
@@ -556,7 +556,7 @@ print("hi$age");
           lead = false;
           if (answer=='2') {
             lead = true;
-            //fever = 45;
+            fever = 45;
           } else
             fever = 30;
           nextQuestion = 12;
@@ -822,7 +822,6 @@ print("hi$age");
         }
         break;
     } //switch ends
-
     answer=null;
     return nextQuestion;
   } //function ends

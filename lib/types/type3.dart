@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import '../self_diagnosis_brain.dart';
 import '../self_diagnosis.dart';
@@ -7,7 +9,6 @@ import 'type2.dart';
 import 'type1.dart';
 import 'type4.dart';
 
-StoryBrain brain = StoryBrain();
 enum TypeOne { yes, no }
 /*
 class Type1 extends StatefulWidget {
@@ -212,10 +213,13 @@ class Type3 extends StatelessWidget {
   Type3(
       {@required this.questionNumber,
       @required this.question,
-      @required this.str});
+      @required this.str,
+      @required this.brain});
+  final StoryBrain brain;
   final String question;
   final List<String> str;
   final int questionNumber;
+
   List<Widget> createRadioList(BuildContext context, answers) {
     List<Widget> widgets = [];
     widgets.add(SizedBox(height: 40));
@@ -250,11 +254,11 @@ class Type3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
 //      backgroundColor: Colors.purple[100],
-    backgroundColor: Colors.blue[100],
+      backgroundColor: Colors.blue[100],
       appBar: AppBar(
         title: Text("Self-Diagnosis"),
 //        backgroundColor: Colors.purple,
-      backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -271,17 +275,19 @@ class Type3 extends StatelessWidget {
             child: RaisedButton(
 
               onPressed: () {
+                print("printing age value insdie type3");
+                print(brain.age);
 
                 //TODO:SHOULD I SORT
                 if (listEquals(answers, []))
                   result = '-1';
 
                 else{
-                  result=null;
-                  result = answers.join();}
+                result=null;
+                result = answers.join();}
                 int q = brain.nextStory(result, questionNumber);
                 answers=[];
-                result=null;
+                result = null;
                 print(q);
                 int type = brain.getQuestionType(q);
                 print(type);
@@ -293,6 +299,7 @@ class Type3 extends StatelessWidget {
                             questionNumber: q,
                             question: brain.getQuestion(q),
                             str: brain.getOptions(q),
+                            brain: brain,
                           )));
                 } else if (type == 2) {
                   Navigator.push(
@@ -302,6 +309,7 @@ class Type3 extends StatelessWidget {
                             questionNumber: q,
                             question: brain.getQuestion(q),
                             str: brain.getOptions(q),
+                            brain: brain,
                           )));
                 } else if (type == 3) {
                   Navigator.push(
@@ -311,6 +319,7 @@ class Type3 extends StatelessWidget {
                             questionNumber: q,
                             question: brain.getQuestion(q),
                             str: brain.getOptions(q),
+                            brain: brain,
                           )));
                 } else if (type == 4) {
                   Navigator.push(
@@ -320,6 +329,7 @@ class Type3 extends StatelessWidget {
                             questionNumber: q,
                             question: brain.getQuestion(q),
                             str: brain.getOptions(q),
+                            brain: brain,
                           )));
                 }
               },

@@ -8,14 +8,17 @@ import 'type2.dart';
 import 'type4.dart';
 
 List<String> answers = [];
-String result;
-StoryBrain brain = StoryBrain();
+String result='1';
 
 class Type1 extends StatefulWidget {
-  Type1(
-      {@required this.questionNumber,
-      @required this.question,
-      @required this.str});
+  Type1({
+    @required this.questionNumber,
+    @required this.question,
+    @required this.str,
+    @required this.brain,
+    Key key,
+  }) : super(key: key);
+  final StoryBrain brain;
   final String question;
   final List<String> str;
   final int questionNumber;
@@ -65,8 +68,9 @@ class _Type1State extends State<Type1> {
                     onChanged: (TypeOne value) {
                       setState(() {
                         _option = value;
+                        result = '0';
                       });
-                      result = '0';
+
                     },
                   ),
                 ),
@@ -83,8 +87,9 @@ class _Type1State extends State<Type1> {
                     onChanged: (TypeOne value) {
                       setState(() {
                         _option = value;
+                        result = '1';
                       });
-                      result = '1';
+
                     },
                   ),
                 ),
@@ -96,9 +101,9 @@ class _Type1State extends State<Type1> {
                 onPressed: () {
                   print(result);
 
-                  int q = brain.nextStory(result, widget.questionNumber);
+                  int q = widget.brain.nextStory(result, widget.questionNumber);
                   print(q);
-                  int type = brain.getQuestionType(q);
+                  int type = widget.brain.getQuestionType(q);
                   print(type);
                   if (type == 1) {
                     Navigator.push(
@@ -106,8 +111,9 @@ class _Type1State extends State<Type1> {
                         MaterialPageRoute(
                             builder: (context) => Type1(
                                   questionNumber: q,
-                                  question: brain.getQuestion(q),
-                                  str: brain.getOptions(q),
+                                  question: widget.brain.getQuestion(q),
+                                  str: widget.brain.getOptions(q),
+                                  brain: widget.brain,
                                 )));
                   } else if (type == 2) {
                     Navigator.push(
@@ -115,8 +121,9 @@ class _Type1State extends State<Type1> {
                         MaterialPageRoute(
                             builder: (context) => Type2(
                                   questionNumber: q,
-                                  question: brain.getQuestion(q),
-                                  str: brain.getOptions(q),
+                                  question: widget.brain.getQuestion(q),
+                                  str: widget.brain.getOptions(q),
+                                  brain: widget.brain,
                                 )));
                   } else if (type == 3) {
                     Navigator.push(
@@ -124,8 +131,9 @@ class _Type1State extends State<Type1> {
                         MaterialPageRoute(
                             builder: (context) => Type3(
                                   questionNumber: q,
-                                  question: brain.getQuestion(q),
-                                  str: brain.getOptions(q),
+                                  question: widget.brain.getQuestion(q),
+                                  str: widget.brain.getOptions(q),
+                                  brain: widget.brain,
                                 )));
                   } else if (type == 4) {
                     Navigator.push(
@@ -133,8 +141,9 @@ class _Type1State extends State<Type1> {
                         MaterialPageRoute(
                             builder: (context) => Type4(
                                   questionNumber: q,
-                                  question: brain.getQuestion(q),
-                                  str: brain.getOptions(q),
+                                  question: widget.brain.getQuestion(q),
+                                  str: widget.brain.getOptions(q),
+                                  brain: widget.brain,
                                 )));
                   }
                 },
