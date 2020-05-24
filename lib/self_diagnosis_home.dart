@@ -129,9 +129,9 @@ Expanded(child: SizedBox(),),
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Type3(
-                                      questionNumber: 3,
-                                      question: brain.getQuestion(3),
-                                      str: brain.getOptions(3),
+                                      questionNumber: 1,
+                                      question: brain.getQuestion(1),
+                                      str: brain.getOptions(1),
                                     )));
                       });
                     },

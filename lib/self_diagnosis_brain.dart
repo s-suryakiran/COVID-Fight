@@ -16,8 +16,7 @@ class StoryBrain {
 
   List<SelfDiagnosis> _questions = [
     SelfDiagnosis(type: 1, questionTitle: 'dummy1'),
-    SelfDiagnosis(type: 1, questionTitle: 'dummy1'),
-    SelfDiagnosis(type: 1, questionTitle: 'dummy1'),
+
 //    1
     SelfDiagnosis(
       type: 3,
@@ -462,17 +461,17 @@ class StoryBrain {
     print(currentQuestion);
     int nextQuestion = 0;
     switch (currentQuestion) {
-      /*case 0:
-        {
-          age = answer[0];
-          nextQuestion = 1;
-        }
-        break;
       case 1:
         {
+          age = 65;
           nextQuestion = 2;
         }
-        break;*/
+        break;
+      case 2:
+        {
+          nextQuestion = 3;
+        }
+        break;
       case 3:
         {
           print("enteres case 3");
@@ -510,56 +509,42 @@ class StoryBrain {
           if (answer == '-1' || answer == '0')
             nextQuestion = 5;
           //TODO please check
-          else if (!answer.contains('0')) nextQuestion = 6;
+          else
+            nextQuestion = 6;
         }
         break;
 
       case 5:
         {
-          switch (answer) {
-            case '0':
-            case '1':
-            case '2':
-              {
-                nextQuestion = 9;
-                stopFlag = true;
-              }
-              break;
-            case '3':
-            case '4':
-              {
-                nextQuestion = 10;
-                stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            nextQuestion = 9;
+            stopFlag = true;
+          }
+
+          if (answer == '3' || answer == '4') {
+            nextQuestion = 10;
+            stopFlag = true;
           }
         }
         break;
 
       case 6:
         {
-          switch (answer) {
-            case '0':
-            case '1':
-            case '2':
-              {
-                nextQuestion = 7;
-                stopFlag = true;
-              }
-              break;
-            case '3':
-            case '4':
-              {
-                nextQuestion = 8;
-                stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            nextQuestion = 7;
+            stopFlag = true;
+          }
+
+          if (answer == '3' || answer == '4') {
+            nextQuestion = 8;
+            stopFlag = true;
           }
         }
         break;
 
       case 11:
         {
+          lead = false;
           if (answer.contains('2')) {
             lead = true;
             fever = 45;
@@ -597,75 +582,59 @@ class StoryBrain {
           if (answer == '-1' || answer == '0')
             nextQuestion = 21;
           //TODO please check
-          else if (!answer.contains('0')) nextQuestion = 16;
+          else
+            nextQuestion = 16;
         }
         break;
 
       case 16:
         {
-          nextQuestion = (answer == '1') ? 20 : 17;
+          nextQuestion = (answer == '1') ? 17 : 20;
           if (nextQuestion == 20) stopFlag = true;
         }
         break;
 
       case 21:
         {
-          nextQuestion = (answer == '1') ? 20 : 22;
+          nextQuestion = (answer == '1') ? 22 : 20;
           if (nextQuestion == 20) stopFlag = true;
         }
         break;
 
       case 17:
         {
-          switch (answer) {
-            case '0':
-            case '1':
-            case '2':
-              {
-                nextQuestion = 18;
-                stopFlag = true;
-              }
-              break;
-            case '3':
-            case '4':
-              {
-                nextQuestion = 19;
-                stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            nextQuestion = 18;
+            stopFlag = true;
+          }
+
+          if (answer == '3' || answer == '4') {
+            nextQuestion = 19;
+            stopFlag = true;
           }
         }
         break;
 
       case 22:
         {
-          switch (answer) {
-            case '0':
-            case '1':
-            case '2':
-              {
-                nextQuestion = 23;
-                stopFlag = true;
-              }
-              break;
-            case '3':
-            case '4':
-              {
-                nextQuestion = 24;
-                if (!(lead == true && age > 65)) {
-                  stopFlag = true;
-                  lead = false;
-                }
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            nextQuestion = 23;
+            stopFlag = true;
+          }
+          if (answer == '3' || answer == '4') {
+            if ((lead == true || age > 65)) {
+              nextQuestion = 25;
+              //TODO:check
+              stopFlag = true;
+              lead = false;
+            } else {
+              nextQuestion = 24;
+              stopFlag = true;
+              lead = false;
+            }
           }
         }
-        break;
-      case 24:
-        {
-          nextQuestion = 25;
-          stopFlag = true;
-        }
+
         break;
 
       case 26:
@@ -729,87 +698,66 @@ class StoryBrain {
           if (answer == '-1' || answer == '0')
             nextQuestion = 41;
           //TODO please check
-          else if (!answer.contains('0')) nextQuestion = 36;
+          else
+            nextQuestion = 36;
         }
         break;
 
       case 36:
         {
-          switch (answer) {
-            case '0':
-            case '1':
-            case '2':
-              {
-                nextQuestion = 37;
-                if (fever <= 40) stopFlag = true;
-              }
-              break;
-            case '3':
-            case '4':
-              {
-                nextQuestion = 39;
-                if (fever <= 40 || age < 65 || lead == false) stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            if (fever <= 40) {
+              nextQuestion = 37;
+              stopFlag = true;
+            } else {
+              nextQuestion = 38;
+              stopFlag = true;
+            }
+          }
+          if (answer == '3' || answer == '4') {
+            if (fever <= 40 || age < 65 || lead == false) {
+              nextQuestion = 39;
+              lead = false;
+              stopFlag = true;
+            } else {
+              nextQuestion = 40;
+              lead = false;
+              stopFlag = true;
+            }
           }
         }
         break;
-      case 37:
-        {
-          nextQuestion = 38;
-          stopFlag = true;
-        }
-        break;
-      case 39:
-        {
-          nextQuestion = 40;
-          lead = false;
-          stopFlag = true;
-        }
-        break;
+
       case 41:
         {
-          switch (answer) {
-            case '0':
-            case '1':
-            case '2':
-              {
-                nextQuestion = 42;
-                if (fever <= 40) stopFlag = true;
-              }
-              break;
-            case '3':
-            case '4':
-              {
-                nextQuestion = 44;
-                if (fever <= 40) stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            if (fever <= 40)
+              nextQuestion = 42;
+            else
+              nextQuestion = 43;
+            stopFlag = true;
           }
-        }
-        break;
-      case 42:
-        {
-          nextQuestion = 43;
-          stopFlag = true;
-        }
-        break;
-      case 44:
-        {
-          nextQuestion = 45;
-          stopFlag = true;
+
+          if (answer == '3' || answer == '4') {
+            if (fever <= 40)
+              nextQuestion = 44;
+            else
+              nextQuestion = 45;
+            stopFlag = true;
+          }
+          break;
         }
         break;
 
       case 46:
         {
-          if (answer == '1') lead = true;
+          if (answer == '0') lead = true;
           nextQuestion = 47;
         }
         break;
       case 47:
         {
-          if (answer == '1') lead = true;
+          if (answer == '0') lead = true;
           nextQuestion = 48;
         }
         break;
@@ -828,56 +776,39 @@ class StoryBrain {
           if (answer == '-1' || answer == '0')
             nextQuestion = 55;
           //TODO please check
-          else if (!answer.contains('0')) nextQuestion = 50;
+          else
+            nextQuestion = 50;
         }
         break;
 
       case 50:
         {
-          switch (answer) {
-            case '0':
-            case '1':
-            case '2':
-              {
-                nextQuestion = 51;
-                if (age < 65 || lead == false) stopFlag = true;
-              }
-              break;
-            case '3':
-            case '4':
-              {
-                nextQuestion = 53;
-                stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            if (age <= 65 || lead == false)
+              nextQuestion = 51;
+            else
+              nextQuestion = 52;
+            stopFlag = true;
           }
-        }
-        break;
-      case 51:
-        {
-          nextQuestion = 52;
+
+          if (answer == '3' || answer == '4') {
+            nextQuestion = 53;
+            stopFlag = true;
+          }
           lead = false;
-          stopFlag = true;
         }
         break;
+
       case 55:
         {
-          switch (answer) {
-            case '0':
-            case '1':
-            case '2':
-              {
-                nextQuestion = 56;
-                stopFlag = true;
-              }
-              break;
-            case '3':
-            case '4':
-              {
-                nextQuestion = 57;
-                stopFlag = true;
-              }
-              break;
+          if (answer == '0' || answer == '1' || answer == '2') {
+            nextQuestion = 56;
+            stopFlag = true;
+          }
+
+          if (answer == '3' || answer == '4') {
+            nextQuestion = 57;
+            stopFlag = true;
           }
         }
         break;
