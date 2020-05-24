@@ -278,6 +278,7 @@ class Type3 extends StatelessWidget {
                 else
                   result = answers.join();
                 int q = brain.nextStory(result, questionNumber);
+                answers=[];
                 print(q);
                 int type = brain.getQuestionType(q);
                 print(type);

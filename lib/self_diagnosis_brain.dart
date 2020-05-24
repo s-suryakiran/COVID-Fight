@@ -813,6 +813,7 @@ class StoryBrain {
         }
         break;
     } //switch ends
+    answer=null;
     return nextQuestion;
   } //function ends
 
