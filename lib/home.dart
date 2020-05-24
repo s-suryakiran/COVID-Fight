@@ -2,29 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'constants.dart';
-import 'counter.dart';
-import 'header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'animated_bar.dart';
-import 'chatbot_chat.dart';
-import 'placeholder_widget.dart';
-import 'status_updation.dart';
-import 'self_diagnosis_home.dart';
-import 'self_diagnosis_brain.dart';
-import 'types/type3.dart';//type 3
+import 'selfDiagnosis/self_diagnosis_home.dart';
+import 'selfDiagnosis/self_diagnosis_brain.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            return Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Chatbot()));
-          },
-          child: Icon(Icons.message),
-        ),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -41,7 +26,6 @@ class Home extends StatelessWidget {
                         color: Colors.deepPurple[800],
                       ),
                       padding: EdgeInsets.all(15),
-//                alignment: Alignment.topLeft,
                       child: Container(
                         padding: EdgeInsets.only(top: 40),
                         child: Center(
@@ -101,31 +85,24 @@ class Home extends StatelessWidget {
                                     ),
                                     Expanded(
                                       child: Text(
-
                                         "Dial\nEmergency",
                                         textAlign: TextAlign.center,
                                         style: kTitleTextstyle.copyWith(
                                             color: Colors.white),
                                       ),
                                     ),
-
                                   ],
                                 ),
                               ),
                             ),
                           ),
-                            SizedBox(
-                              width: 10,
-                            ),
+                          SizedBox(
+                            width: 10,
+                          ),
                           Expanded(
                             child: RaisedButton(
                               color: Colors.blue,
-
-                              //TODO: 1.Self Diagnosis page
                               onPressed: () {
-//                                Navigator.push(context, MaterialPageRoute(builder: (context) {
-//                                  return (SelfDiagnosisHome());
-//                                }));
                                 StoryBrain brain = StoryBrain();
                                 int type = brain.getQuestionType(3);
                                 print(brain.getOptions(3));
@@ -133,7 +110,8 @@ class Home extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => SelfDiagnosisHome()));
+                                          builder: (context) =>
+                                              SelfDiagnosisHome()));
                                 }
                               },
                               shape: RoundedRectangleBorder(
@@ -162,7 +140,6 @@ class Home extends StatelessWidget {
                                             color: Colors.white),
                                       ),
                                     ),
-
                                   ],
                                 ),
                               ),

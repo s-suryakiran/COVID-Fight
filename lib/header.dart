@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
-
 import 'constants.dart';
-import 'info_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class MyHeader extends StatefulWidget {
   final String image;
@@ -49,7 +46,7 @@ class _MyHeaderState extends State<MyHeader> {
               child: Stack(
                 children: <Widget>[
                   Positioned(
-                    top: 10- widget.offset / 2,
+                    top: 10 - widget.offset / 2,
                     left: 220,
                     child: Text(
                       "${widget.textTop} \n${widget.textBottom}",

@@ -8,8 +8,9 @@ class AnimatedBottomBar extends StatefulWidget {
 
   AnimatedBottomBar(
       {this.barItems,
-        this.animationDuration = const Duration(milliseconds: 500),
-        this.onBarTap, this.barStyle});
+      this.animationDuration = const Duration(milliseconds: 500),
+      this.onBarTap,
+      this.barStyle});
 
   @override
   _AnimatedBottomBarState createState() => _AnimatedBottomBarState();
@@ -25,7 +26,7 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar>
       elevation: 10.0,
       child: Padding(
         padding: const EdgeInsets.only(
-          bottom:10.0,
+          bottom: 10.0,
           top: 10.0,
           left: 16.0,
           right: 16.0,
@@ -62,11 +63,8 @@ class _AnimatedBottomBarState extends State<AnimatedBottomBar>
               borderRadius: BorderRadius.all(Radius.circular(30))),
           child: Row(
             children: <Widget>[
-              Icon(
-                item.iconData,
-                color: isSelected ? item.color : Colors.black,
-                size: 25
-              ),
+              Icon(item.iconData,
+                  color: isSelected ? item.color : Colors.black, size: 25),
               SizedBox(
                 width: 10.0,
               ),
@@ -96,7 +94,10 @@ class BarStyle {
   final double fontSize, iconSize;
   final FontWeight fontWeight;
 
-  BarStyle({this.fontSize = 18.0, this.iconSize = 32, this.fontWeight = FontWeight.w600});
+  BarStyle(
+      {this.fontSize = 18.0,
+      this.iconSize = 32,
+      this.fontWeight = FontWeight.w600});
 }
 
 class BarItem {

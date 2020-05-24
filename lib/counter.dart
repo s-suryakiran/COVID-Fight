@@ -48,5 +48,3 @@ class Counter extends StatelessWidget {
     );
   }
 }
-
-

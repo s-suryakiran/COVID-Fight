@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '../self_diagnosis_brain.dart';
-import '../self_diagnosis.dart';
-import 'package:grouped_buttons/grouped_buttons.dart';
+import '../selfDiagnosis/self_diagnosis_brain.dart';
 import 'package:flutter/foundation.dart';
 import 'type3.dart';
 import 'type1.dart';
@@ -63,7 +61,6 @@ class _Type2State extends State<Type2> {
     widgets.add(Expanded(
       child: RaisedButton(
         onPressed: () {
-          //TODO:IMPLEMENT NAV PUSH
           print(result);
           int q = widget.str.indexOf(result);
           q = widget.brain.nextStory(q.toString(), widget.questionNumber);

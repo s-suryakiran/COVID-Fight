@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'self_diagnosis_brain.dart';
-import 'types/type3.dart';
+import '../types/type3.dart';
+
 
 const kBottomContainerHeight1 = 80.0;
 const kReusableCardColor1 = Color(0xFF1d1e33);

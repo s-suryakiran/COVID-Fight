@@ -25,8 +25,5 @@ const kTitleTextstyle = TextStyle(
   color: kTitleTextColor,
   fontWeight: FontWeight.bold,
 );
-const kTextStyle=TextStyle(
-  fontSize: 20,
-  fontWeight: FontWeight.w900,
-  letterSpacing: 1
-);
+const kTextStyle =
+    TextStyle(fontSize: 20, fontWeight: FontWeight.w900, letterSpacing: 1);
