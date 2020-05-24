@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'self_diagnosis_brain.dart';
 import 'types/type3.dart';
 
-StoryBrain brain = new StoryBrain();
 const kBottomContainerHeight1 = 80.0;
 const kReusableCardColor1 = Color(0xFF1d1e33);
 var kInactiveCardColor1 = Colors.blue[200];
@@ -125,8 +124,9 @@ Expanded(child: SizedBox(),),
                   child: RaisedButton(
                     onPressed: () {
                       setState(() {
-                        StoryBrain storybrain=new StoryBrain();
-                        storybrain.getAge(age);
+
+                        StoryBrain brain = new StoryBrain(age:age);
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(

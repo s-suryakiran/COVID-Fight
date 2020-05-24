@@ -9,9 +9,8 @@ class StoryBrain {
   bool stopFlag = false, lead = false;
   int age;
   int fever;
-  void getAge(int age){
-    this.age=age;
-  }
+
+  StoryBrain({this.age});
   //type 1=> yes or no
   //type 2=> single choice selection
   //type 3=> multiple choice selection
