@@ -275,10 +275,13 @@ class Type3 extends StatelessWidget {
                 //TODO:SHOULD I SORT
                 if (listEquals(answers, []))
                   result = '-1';
-                else
-                  result = answers.join();
+
+                else{
+                  result=null;
+                  result = answers.join();}
                 int q = brain.nextStory(result, questionNumber);
                 answers=[];
+                result=null;
                 print(q);
                 int type = brain.getQuestionType(q);
                 print(type);

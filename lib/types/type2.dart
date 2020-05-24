@@ -39,7 +39,7 @@ class _Type2State extends State<Type2> {
         ),
       ),
     ));
-    _option=widget.str[0];
+
     for (String Str in widget.str) {
 
       widgets.add(Expanded(

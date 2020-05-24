@@ -1,4 +1,8 @@
 //import 'dart:html';
+
+
+import 'package:flutter/cupertino.dart';
+
 import 'self_diagnosis.dart';
 import 'package:flutter/foundation.dart';
 
@@ -17,7 +21,7 @@ class StoryBrain {
   //type 4=>result
 
   List<SelfDiagnosis> _questions = [
-    SelfDiagnosis(type: 1, questionTitle: 'dummy1'),
+    SelfDiagnosis(type: 1, questionTitle: 'Please check atleast one answer'),
 
 //    1
     SelfDiagnosis(
@@ -463,6 +467,9 @@ class StoryBrain {
     print(currentQuestion);
     int nextQuestion = 0;
     switch (currentQuestion) {
+      case 0:
+        nextQuestion=1;
+        break;
       case 1:
         {
 print("hi$age");
