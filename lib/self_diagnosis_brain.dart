@@ -554,9 +554,9 @@ print("hi$age");
       case 11:
         {
           lead = false;
-          if (answer.contains('2')) {
+          if (answer=='2') {
             lead = true;
-            fever = 45;
+            //fever = 45;
           } else
             fever = 30;
           nextQuestion = 12;
@@ -580,7 +580,7 @@ print("hi$age");
         {
           if (answer == '0') //if yes
             lead = true;
-          if (fever > 40 || lead == true)
+          if (lead == true)
             nextQuestion = 30;
           else
             nextQuestion = 15;
@@ -822,6 +822,7 @@ print("hi$age");
         }
         break;
     } //switch ends
+
     answer=null;
     return nextQuestion;
   } //function ends

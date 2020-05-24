@@ -48,6 +48,12 @@ class _Type4State extends State<Type4> {
           RaisedButton(
             onPressed: () {
               //TODO:next question
+              setState(() {
+                StoryBrain storybrain=new StoryBrain();
+                storybrain.lead=false;
+                storybrain.stopFlag = false;
+              });
+
               print(widget.str[0]);
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => HomeScreen()));
