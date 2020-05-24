@@ -15,3 +15,5 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 # Covid-Flutter
+For seeinf the App in actions see the Youtube video linked below:
+https://youtu.be/x2GKe9V24k4
