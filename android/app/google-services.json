@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "587172879338-5gc9fq4ba2vjip969c80h9o6ja57rn98.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.suryakiran.CovidFight",
+            "certificate_hash": "c1aed53fde4176634b322bfa77be3be8e7a62875"
+          }
+        },
+        {
           "client_id": "587172879338-l7uvr6lo9os98r69t54bq9oueqmelpaf.apps.googleusercontent.com",
           "client_type": 3
         }

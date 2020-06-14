@@ -7,12 +7,14 @@ import 'selfDiagnosis/self_diagnosis_home.dart';
 import 'selfDiagnosis/self_diagnosis_brain.dart';
 
 class Home extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
