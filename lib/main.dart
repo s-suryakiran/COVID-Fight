@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-      //home:HomeScreen(),
-    home:SignIn(),
+      home:HomeScreen(),
+   // home:SignIn(),
     );
   }
 }
