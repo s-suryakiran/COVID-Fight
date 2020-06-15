@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
+import 'home_screen.dart';
 class SignupPage extends StatefulWidget {
   @override
   _SignupPageState createState() => _SignupPageState();
@@ -130,12 +131,13 @@ class _SignupPageState extends State<SignupPage> {
                           borderRadius: BorderRadius.circular(20.0)),
                       child: InkWell(
                         onTap: () {
-                          Navigator.of(context).pop();
+                          Navigator.push(context,  MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
                         },
                         child:
 
                         Center(
-                          child: Text('Go Back',
+                          child: Text('Go',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Montserrat')),

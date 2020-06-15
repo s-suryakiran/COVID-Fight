@@ -18,24 +18,40 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final ams =AdMobService();
   static final MobileAdTargetingInfo targetInfo=new MobileAdTargetingInfo(
+   // keywords: <String>['flutterio', 'beautiful apps'],
+    contentUrl: 'https://flutter.io',
+    birthday: DateTime.now(),
+//    childDirected: false,
+//    designedForFamilies: false,
+    //gender: MobileAdGender.male, // or MobileAdGender.female, MobileAdGender.unknown
     testDevices: <String>[],
-    //keywords: <String>['Covid'],
 
 
   );
-  BannerAd _bannerAd;
-  BannerAd createBannerAd(){
-    return new BannerAd(adUnitId: "ca-app-pub-1822795815054835/1121188679", size: AdSize.banner,targetingInfo: targetInfo,listener: (MobileAdEvent e){
-      print("banner:$e");
-    });
-  }
+  BannerAd myBanner = BannerAd(
+
+    adUnitId: "ca-app-pub-1822795815054835/5674978521",
+    size: AdSize.smartBanner,
+    targetingInfo: targetInfo,
+    listener: (MobileAdEvent event) {
+      print("BannerAd event is $event");
+    },
+  );
+
+//  BannerAd _bannerAd;
+//  BannerAd createBannerAd(){
+//    return new BannerAd(adUnitId: "ca-app-pub-1822795815054835/1121188679", size: AdSize.banner,targetingInfo: targetInfo,listener: (MobileAdEvent e){
+//      print("banner:$e");
+//    });
+//  }
   @override
   void initState() {
     // TODO: implement initState
+    FirebaseAdMob.instance.initialize(appId: "ca-app-pub-1822795815054835~2434270349") ;
+
     super.initState();
     //Admob.initialize("ca-app-pub-1822795815054835~2434270349");
-    FirebaseAdMob.instance.initialize(appId: "ca-app-pub-1822795815054835~2434270349") ;
-    _bannerAd = createBannerAd()..load()..show();
+    //_bannerAd = createBannerAd()..load()..show();
   }
   @override
   void dispose() {
@@ -45,6 +61,16 @@ class _HomeState extends State<Home> {
   }
   @override
   Widget build(BuildContext context) {
+    myBanner
+    // typically this happens well before the ad is shown
+      ..load()
+      ..show(
+        // Positions the banner ad 60 pixels from the bottom of the screen
+        anchorOffset: 60.0,
+        // Positions the banner ad 10 pixels from the center of the screen to the right
+        // Banner Position
+        anchorType: AnchorType.bottom,
+      );
     return Scaffold(
         body: SingleChildScrollView(
           child: Column(
