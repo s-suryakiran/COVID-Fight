@@ -18,24 +18,19 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final ams =AdMobService();
   static final MobileAdTargetingInfo targetInfo=new MobileAdTargetingInfo(
-   // keywords: <String>['flutterio', 'beautiful apps'],
-    contentUrl: 'https://flutter.io',
-    birthday: DateTime.now(),
-//    childDirected: false,
-//    designedForFamilies: false,
-    //gender: MobileAdGender.male, // or MobileAdGender.female, MobileAdGender.unknown
     testDevices: <String>[],
 
 
   );
+
   BannerAd myBanner = BannerAd(
 
-    adUnitId: "ca-app-pub-1822795815054835/5674978521",
-    size: AdSize.smartBanner,
-    targetingInfo: targetInfo,
-    listener: (MobileAdEvent event) {
-      print("BannerAd event is $event");
-    },
+  adUnitId: "ca-app-pub-1822795815054835/5674978521",
+  size: AdSize.smartBanner,
+  targetingInfo: targetInfo,
+  listener: (MobileAdEvent event) {
+  print("BannerAd event is $event");
+  },
   );
 
 //  BannerAd _bannerAd;
@@ -48,19 +43,6 @@ class _HomeState extends State<Home> {
   void initState() {
     // TODO: implement initState
     FirebaseAdMob.instance.initialize(appId: "ca-app-pub-1822795815054835~2434270349") ;
-
-    super.initState();
-    //Admob.initialize("ca-app-pub-1822795815054835~2434270349");
-    //_bannerAd = createBannerAd()..load()..show();
-  }
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  //_bannerAd?.dispose();
-  }
-  @override
-  Widget build(BuildContext context) {
     myBanner
     // typically this happens well before the ad is shown
       ..load()
@@ -71,6 +53,13 @@ class _HomeState extends State<Home> {
         // Banner Position
         anchorType: AnchorType.bottom,
       );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+
     return Scaffold(
         body: SingleChildScrollView(
           child: Column(
