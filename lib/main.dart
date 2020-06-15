@@ -1,7 +1,7 @@
 import 'constants.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
-import 'signin.dart';
+import 'signup.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: kBodyTextColor),
           )),
-      home:HomeScreen(),
-   // home:SignIn(),
+     // home:HomeScreen(),
+    home:SignupPage(),
     );
   }
 }
