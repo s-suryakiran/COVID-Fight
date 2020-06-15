@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   final ams =AdMobService();
   static final MobileAdTargetingInfo targetInfo=new MobileAdTargetingInfo(
     testDevices: <String>[],
-    keywords: <String>['Covid'],
+    //keywords: <String>['Covid'],
 
 
   );
